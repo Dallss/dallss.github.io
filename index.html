@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Typing Intro</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    #splash {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .cursor::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    #main-content {
+      display: none;
+      padding: 2em;
+    }
+
+    .lineHeader {
+      color: green; /* Make the lineHeader green */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="splash">
+    <div id="here"></div>
+  </div>
+
+  <div id="main-content">
+    <h1>Welcome to the Site</h1>
+    <p>This is your actual content.</p>
+  </div>
+
+  <script>
+    window.onload = function () {
+      // Array of objects containing lineHeader and line
+      const commands = [
+        { lineHeader: "randall@Randalls-MacBook ~ % ", line: "cd ./randall" },
+        { lineHeader: "randall@Randalls-MacBook/randall ~ % ", line: "ls -la" },
+        { lineHeader: "randall@Randalls-MacBook/randall~ % ", line: "npm start" }
+      ];
+
+      const container = document.getElementById("here");
+      let cursor = document.createElement("span");
+      cursor.className = "cursor";
+      container.appendChild(cursor);
+
+      let commandIndex = 0;
+      let charIndex = 0;
+
+      function typeLineHeader() {
+        const { lineHeader, line } = commands[commandIndex];
+        const lineHeaderElement = document.createElement("span");
+        lineHeaderElement.className = "lineHeader";  // Apply the green color here
+        lineHeaderElement.textContent = lineHeader;
+        container.insertBefore(lineHeaderElement, cursor);
+        setTimeout(() => typeLine(line), 1500); // Wait a bit before typing the line
+      }
+
+      function typeLine(line) {
+        if (charIndex < line.length) {
+          cursor.insertAdjacentText("beforebegin", line[charIndex]);
+          charIndex++;
+          setTimeout(() => typeLine(line), 100);
+        } else {
+          container.insertBefore(document.createElement("br"), cursor);
+          commandIndex++;
+          charIndex = 0;
+
+          if (commandIndex < commands.length) {
+            setTimeout(typeLineHeader, 300); // After typing a line, add the lineHeader again before the next line
+          } else {
+            setTimeout(() => {
+              // Add "Server starting ..." message without the lineHeader and stay for 2 seconds
+              const serverMessage = document.createElement("span");
+              serverMessage.textContent = "Server starting ...";
+              container.insertBefore(serverMessage, cursor);
+              container.insertBefore(document.createElement("br"), cursor); // Add a line break after message
+              setTimeout(() => {
+                // After 2 seconds, hide the splash screen and show the content
+                document.getElementById("splash").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+              }, 2000); 
+            }, 1000);
+          }
+        }
+      }
+
+      typeLineHeader(); // Start typing the first lineHeader immediately
+
+    };
+  </script>
+
+</body>
+</html>
