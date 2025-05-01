@@ -1,0 +1,109 @@
+* { box-sizing: border-box; }
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+#splash {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.cursor::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+#main-content {
+    display: none;
+    padding: 2em;
+
+    height: 120vh;
+    width: 85vw;
+    margin-top: 10vh;
+    padding: 4vw;
+    border-radius: 50px;
+    border: 3px solid white;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+
+    background-image: url('./assets/noise.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat; 
+}
+
+.lineHeader {
+    color: green; /* Make the lineHeader green */
+}
+
+.header {
+  height: 35vh;
+  /* border: 1px solid white; */
+}
+.greetings {
+  font-family: 'Hind Jalandhar', sans-serif;
+  font-weight: 200;
+  font-size: 3.8rem;
+  margin: 0;
+  margin-left: 3vw;
+  margin-top: 8vh;
+}
+.sub {
+  color: rgb(0, 223, 0);
+  font-weight: 200;
+  font-size: 2.3rem;
+  margin: 0;
+  margin-left: 3vw;
+  padding-top: 0;
+  
+}
+.sub-cont {
+  /* border: 1px solid white; */
+  height: 40vh;
+
+  display: flex ;
+}
+
+.links {
+  flex: 4;
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+
+}
+.carousel {
+  flex: 5;
+  /* border: 1px solid white; */
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-family: 'geist', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 200;
+  margin-left: 3vw;
+  margin-bottom: 1rem;
+}
