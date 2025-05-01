@@ -52,7 +52,8 @@ html, body {
 
     background-image: url('./assets/noise.png');
     background-size: 100% auto;
-    background-repeat: no-repeat; 
+    background-repeat: repeat-y;
+
 }
 
 .lineHeader {
@@ -60,8 +61,9 @@ html, body {
 }
 
 .header {
-  height: 35vh;
+  margin-bottom: 10vw;
   /* border: 1px solid white; */
+
 }
 .greetings {
   font-family: 'Hind Jalandhar', sans-serif;
@@ -82,7 +84,7 @@ html, body {
 }
 .sub-cont {
   /* border: 1px solid white; */
-  height: 40vh;
+  
 
   display: flex ;
 }
@@ -105,5 +107,5 @@ a {
   font-size: 1.3rem;
   font-weight: 200;
   margin-left: 3vw;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
