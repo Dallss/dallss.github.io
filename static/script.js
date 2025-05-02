@@ -61,47 +61,55 @@
    console.log(carousel)
     let isScrolling = false;
     let scrollTimeout;
-    let currentExpandedItem = null;
+
     let itemCount = 0;
     
     const items = document.getElementsByClassName('car-item')
+    let currentExpandedItem = items[0];
 
     for( let item of items) {
-        console.log(item)
+
         item.addEventListener('click', function() {
-        if (isScrolling) return;
-        
-        // If this item is already expanded, collapse it
-        if (item.classList.contains('expanded')) {
-            item.classList.remove('expanded');
-            currentExpandedItem = null;
-        } else {
-            // Collapse any currently expanded item
-            if (currentExpandedItem) {
-            currentExpandedItem.classList.remove('expanded');
-            }
+
+            // TODO: fix broken bring into focus.
+            // if (!item.classList.contains('expanded')){
+            //     const childOffsetLeft = item.offsetLeft - carousel.offsetLeft;
+            //     const scrollX = childOffsetLeft;
+            //     if(scrollX > 0)
+            //     carousel.scrollTo({ left: scrollX, behavior: 'smooth' });
+                
+            // }
+          // if (isScrolling) return;
             
-            // Expand this item
-            item.classList.add('expanded');
-            currentExpandedItem = item;
-        }
+            // If this item is already expanded, collapse it
+            if (item.classList.contains('expanded')) {
+                item.classList.remove('expanded');
+                currentExpandedItem = null;
+            } else {
+                // Collapse any currently expanded item
+                if (currentExpandedItem) {
+                currentExpandedItem.classList.remove('expanded');
+                }
+                item.classList.add('expanded');
+                currentExpandedItem = item;
+            }
         });
     }
 
-    carousel.addEventListener('scroll', ()=>{
-        isScrolling = true;
+    // carousel.addEventListener('scroll', ()=>{
+    //     isScrolling = true;
       
-      // Collapse any expanded item
-      if (currentExpandedItem) {
-        currentExpandedItem.classList.remove('expanded');
-        currentExpandedItem = null;
-      }
+    //   // Collapse any expanded item
+    //   if (currentExpandedItem) {
+    //     currentExpandedItem.classList.remove('expanded');
+    //     currentExpandedItem = null;
+    //   }
       
-      // Clear previous timeout
-      clearTimeout(scrollTimeout);
+    //   // Clear previous timeout
+    //   clearTimeout(scrollTimeout);
       
-      // Set timeout to reset scrolling flag
-      scrollTimeout = setTimeout(function() {
-        isScrolling = false;
-      }, 100);
-    })
+    //   // Set timeout to reset scrolling flag
+    //   scrollTimeout = setTimeout(function() {
+    //     isScrolling = false;
+    //   }, 100);
+    // })

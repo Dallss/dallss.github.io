@@ -62,7 +62,7 @@ html, body {
 }
 
 .header {
-  margin-bottom: 8vw;
+  margin-bottom: 5vw;
   /* border: 1px solid white; */
 
 }
@@ -101,9 +101,9 @@ html, body {
 
 }
 .carousel {
-  flex: 3;
+  flex: 4;
   height: 330px;
-  min-width: 250px;
+  min-width: 300px;
   gap: 15px;
   display: flex;
   overflow-x: scroll;
@@ -113,6 +113,7 @@ html, body {
   -ms-overflow-style: none;
   margin-right: 100px;
   margin-left: 100px;
+  position: relative;
   
 }
 
@@ -124,18 +125,17 @@ html, body {
   font-size: large;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.252);
-  transition: 0.3s ease, padding 0.3s ease;
+  transition: 0.6s ease, padding 0.3s ease;
   display: flex;
   justify-content: flex-start;
-  padding-top: 20px;
+  padding: 20px;
   align-items: center;
   text-align: center;
   writing-mode: vertical-rl; /* Vertical text when not expanded */
 }
 
 .carousel > .expanded {
-  padding: 20px;
-  width: 200px;
+  width: 300px;
   writing-mode: horizontal-tb; /* Horizontal text when expanded */
   align-items: flex-end; /* Align text at the bottom when expanded */
   justify-content: flex-start;
