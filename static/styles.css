@@ -3,7 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
+
     background-color: black;
     display: flex;
     justify-content: center;
@@ -37,19 +37,20 @@ html, body {
 
 #main-content {
     display: none;
-    padding: 2em;
-
-    height: 120vh;
     width: 85vw;
     margin-top: 10vh;
     padding: 4vw;
-    border-radius: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border: 3px solid white;
+    border-bottom: 2px solid white;
     color: white;
     display: flex;
     flex-direction: column;
 
-
+    padding-bottom: 800px;
     background-image: url('./assets/noise.png');
     background-size: 100% auto;
     background-repeat: repeat-y;
@@ -61,7 +62,7 @@ html, body {
 }
 
 .header {
-  margin-bottom: 10vw;
+  margin-bottom: 8vw;
   /* border: 1px solid white; */
 
 }
@@ -84,9 +85,9 @@ html, body {
 }
 .sub-cont {
   /* border: 1px solid white; */
-  
+  display: flex;
+  flex-wrap: wrap;
 
-  display: flex ;
 }
 
 .links {
@@ -94,12 +95,53 @@ html, body {
   /* border: 1px solid white; */
   display: flex;
   flex-direction: column;
+  min-width: 400px;
+  margin-top: 3vw;
+  margin-left: 1rem;
 
 }
 .carousel {
-  flex: 5;
-  /* border: 1px solid white; */
+  flex: 3;
+  height: 330px;
+  min-width: 250px;
+  gap: 15px;
+  display: flex;
+  overflow-x: scroll;
+  align-items: center;
+  padding: 30px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  margin-right: 100px;
+  margin-left: 100px;
+  
 }
+
+.carousel > * {
+  flex-shrink: 0;
+  width: 70px;
+  height: 100%;
+  border: 1px solid white;
+  font-size: large;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.252);
+  transition: 0.3s ease, padding 0.3s ease;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 20px;
+  align-items: center;
+  text-align: center;
+  writing-mode: vertical-rl; /* Vertical text when not expanded */
+}
+
+.carousel > .expanded {
+  padding: 20px;
+  width: 200px;
+  writing-mode: horizontal-tb; /* Horizontal text when expanded */
+  align-items: flex-end; /* Align text at the bottom when expanded */
+  justify-content: flex-start;
+}
+
+
 a {
   color: white;
   text-decoration: none;
@@ -108,4 +150,9 @@ a {
   font-weight: 200;
   margin-left: 3vw;
   margin-bottom: 1.2rem;
+  width: fit-content;
+}
+
+a:hover {
+  text-shadow: 0 0 10px #01ae12aa, 0 0 20px #01ae12aa, 0 0 30px #01ae12aa, 0 0 40px #01ae12aa;
 }
