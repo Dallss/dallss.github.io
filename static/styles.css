@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     height: 100%;
 
+    scroll-behavior: smooth;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -75,15 +76,29 @@ html, body {
   margin-left: 3vw;
   margin-top: 8vh;
 }
+.sub-wrapper {
+  height: 2.8rem; /* height of one line */
+  overflow: hidden;
+  margin-left: 3vw;
+  position: relative;
+}
+
+.sub-slider {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease-in-out;
+}
+
 .sub {
   color: rgb(0, 223, 0);
   font-weight: 200;
   font-size: 2.3rem;
   margin: 0;
-  margin-left: 3vw;
-  padding-top: 0;
-  
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
 }
+
 .sub-cont {
   /* border: 1px solid white; */
   display: flex;

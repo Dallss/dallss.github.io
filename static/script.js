@@ -165,3 +165,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start scrolling
     resumeCarousel();
     });
+    
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('slider');
+    const items = slider.children;
+    let index = 0;
+    const total = items.length;
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      slider.style.transform = `translateY(-${index * 2.8}rem)`;
+    }, 3000); // change every 3 seconds
+  });
+
