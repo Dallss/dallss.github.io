@@ -1,71 +1,78 @@
-// window.onload = function () {
-//     // Array of objects containing lineHeader and line
-//     const commands = [
-//         { lineHeader: "randall@Randalls-MacBook ~ % ", line: "cd ./randall" },
-//         { lineHeader: "randall@Randalls-MacBook/randall ~ % ", line: "ls -la" },
-//         { lineHeader: "randall@Randalls-MacBook/randall~ % ", line: "npm start" }
-//     ];
+window.onload = function () {
+    // Array of objects containing lineHeader and line
+    const commands = [
+        { lineHeader: "randall@Randalls-MacBook ~ % ", line: "cd ./randall" },
+        { lineHeader: "randall@Randalls-MacBook/randall ~ % ", line: "ls -la" },
+        { lineHeader: "randall@Randalls-MacBook/randall~ % ", line: "npm start" }
+    ];
 
-//     const container = document.getElementById("here");
-//     let cursor = document.createElement("span");
-//     cursor.className = "cursor";
-//     container.appendChild(cursor);
+    const container = document.getElementById("here");
+    let cursor = document.createElement("span");
+    cursor.className = "cursor";
+    container.appendChild(cursor);
 
-//     let commandIndex = 0;
-//     let charIndex = 0;
+    let commandIndex = 0;
+    let charIndex = 0;
 
-//     function typeLineHeader() {
-//         const { lineHeader, line } = commands[commandIndex];
-//         const lineHeaderElement = document.createElement("span");
-//         lineHeaderElement.className = "lineHeader";  // Apply the green color here
-//         lineHeaderElement.textContent = lineHeader;
-//         container.insertBefore(lineHeaderElement, cursor);
-//         setTimeout(() => typeLine(line), 1500); // Wait a bit before typing the line
-//     }
+    function typeLineHeader() {
+        const { lineHeader, line } = commands[commandIndex];
+        const lineHeaderElement = document.createElement("span");
+        lineHeaderElement.className = "lineHeader";  // Apply the green color here
+        lineHeaderElement.textContent = lineHeader;
+        container.insertBefore(lineHeaderElement, cursor);
+        setTimeout(() => typeLine(line), 1500); // Wait a bit before typing the line
+    }
 
-//     function typeLine(line) {
-//         if (charIndex < line.length) {
-//         cursor.insertAdjacentText("beforebegin", line[charIndex]);
-//         charIndex++;
-//         setTimeout(() => typeLine(line), 100);
-//         } else {
-//         container.insertBefore(document.createElement("br"), cursor);
-//         commandIndex++;
-//         charIndex = 0;
+    function typeLine(line) {
+        if (charIndex < line.length) {
+        cursor.insertAdjacentText("beforebegin", line[charIndex]);
+        charIndex++;
+        setTimeout(() => typeLine(line), 100);
+        } else {
+        container.insertBefore(document.createElement("br"), cursor);
+        commandIndex++;
+        charIndex = 0;
 
-//         if (commandIndex < commands.length) {
-//             setTimeout(typeLineHeader, 300); // After typing a line, add the lineHeader again before the next line
-//         } else {
-//             setTimeout(() => {
-//             // Add "Server starting ..." message without the lineHeader and stay for 2 seconds
-//             const serverMessage = document.createElement("span");
-//             serverMessage.textContent = "Server starting ...";
-//             container.insertBefore(serverMessage, cursor);
-//             container.insertBefore(document.createElement("br"), cursor); // Add a line break after message
-//             setTimeout(() => {
-//                 // After 2 seconds, hide the splash screen and show the content
-//                 document.getElementById("splash").style.display = "none";
-//                 document.getElementById("main-content").style.display = "block";
-//             }, 2000); 
-//             }, 1000);
-//         }
-//         }
-//     }
+        if (commandIndex < commands.length) {
+            setTimeout(typeLineHeader, 300); // After typing a line, add the lineHeader again before the next line
+        } else {
+            setTimeout(() => {
+            // Add "Server starting ..." message without the lineHeader and stay for 2 seconds
+            const serverMessage = document.createElement("span");
+            serverMessage.textContent = "Server starting ...";
+            container.insertBefore(serverMessage, cursor);
+            container.insertBefore(document.createElement("br"), cursor); // Add a line break after message
+            setTimeout(() => {
+                // After 2 seconds, hide the splash screen and show the content
+                document.getElementById("splash").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            }, 2000); 
+            }, 1000);
+        }
+        }
+    }
 
-//     typeLineHeader(); // Start typing the first lineHeader immediately
-// };
+    setTimeout(()=>{
+
+        const items = document.getElementsByClassName('car-item')
+
+        items[0].classList.add('expanded');
+        currentExpandedItem = items[0];
+        console.log('irpinted');
+
+    }, 11500)
+    typeLineHeader(); // Start typing the first lineHeader immediately
+};
 
 
 
-   const carousel = document.getElementById('carousel');
-   console.log(carousel)
+    const carousel = document.getElementById('carousel');
     let isScrolling = false;
     let scrollTimeout;
 
     let itemCount = 0;
     
     const items = document.getElementsByClassName('car-item')
-    let currentExpandedItem = items[0];
 
     for( let item of items) {
 
@@ -113,3 +120,48 @@
     //     isScrolling = false;
     //   }, 100);
     // })
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carousel-track');
+
+    if (!track) return;
+
+    // Clone all project items
+    const cloneItems = () => {
+        const items = Array.from(track.children);
+        items.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+        });
+    };
+
+    cloneItems();
+
+    let scrollAmount = 0;
+    let animationId;
+
+    function scrollCarousel() {
+        scrollAmount += 1;
+        if (scrollAmount >= track.scrollWidth / 2) {
+        scrollAmount = 0;
+        }
+        track.style.transform = `translateX(-${scrollAmount}px)`;
+        animationId = requestAnimationFrame(scrollCarousel);
+    }
+
+    function pauseCarousel() {
+        cancelAnimationFrame(animationId);
+    }
+
+    function resumeCarousel() {
+        animationId = requestAnimationFrame(scrollCarousel);
+    }
+
+    const wrapper = document.querySelector('.carousel-wrapper');
+    wrapper.addEventListener('mouseenter', pauseCarousel);
+    wrapper.addEventListener('mouseleave', resumeCarousel);
+
+    // Start scrolling
+    resumeCarousel();
+    });
