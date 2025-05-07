@@ -1,8 +1,7 @@
 // Functions
-
 function runTerminalSimulation(commands) {
     const container = document.getElementById("here");
-    container.innerHTML = ""; // Clear previous content if any
+    container.innerHTML = "";
 
     let cursor = document.createElement("span");
     cursor.className = "cursor";
@@ -19,7 +18,6 @@ async function typeLineHeader(commands, container, cursor) {
         lineHeaderElement.textContent = lineHeader;
         container.insertBefore(lineHeaderElement, cursor);
 
-        // Start typing the current line after a short delay
         await typeLine(line, container, cursor);
 
         // Add a break after the line is typed
@@ -51,8 +49,8 @@ async function typeLine(line, container, cursor) {
                 cursor.insertAdjacentText("beforebegin", line[charIndex]);
                 charIndex++;
             } else {
-                clearInterval(intervalId); // Stop typing when the line is complete
-                resolve(); // Resolve the promise when done typing
+                clearInterval(intervalId);
+                resolve();
             }
         }, 100); // Typing speed interval
     });
@@ -60,9 +58,7 @@ async function typeLine(line, container, cursor) {
 function runAfterTerminalSimulation() {
     const items = document.getElementsByClassName('car-item');
     if (items[0]) {
-        items[0].classList.add('expanded');
-        currentExpandedItem = items[0];
-        console.log('item expanded');
+        items[0].click()
     }
 
     const slider = document.getElementById('slider');
@@ -77,7 +73,6 @@ function runAfterTerminalSimulation() {
 function loadMoreProjects() {
     const track = document.getElementById('carousel-track');
     if (!track) return;
-    // Clone all project items
     const cloneItems = () => {
         const items = Array.from(track.children);
         items.forEach(item => {
@@ -105,68 +100,69 @@ function loadMoreProjects() {
     const wrapper = document.querySelector('.carousel-wrapper');
     wrapper.addEventListener('mouseenter', pauseCarousel);
     wrapper.addEventListener('mouseleave', resumeCarousel);
-    // Start scrolling
+
     resumeCarousel();
 }
+
 function loadFeaturedProjects() {
     const carouselItems = [
-        { label: 'RUBIKZ', bg: "url('./assets/rubikz.png')", link: 'https://rubikz-i5pj.vercel.app/' },
-        { label: 'Budget-Co', bg: 'url(budget.jpg)', link: 'https://budget-co.up.railway.app/' },
-        { label: 'Connect-4', bg: '', link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
-        { label: 'Chain-Reaction', bg: 'url(chain.jpg)', link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
+        { label: 'RUBIKZ', bg: "url('./static/assets/rubikz.png')", link: 'https://rubikz-i5pj.vercel.app/' },
+        { label: 'Budget-Co', bg: "url('./static/assets/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
+        { label: 'Connect-4', bg: "url('./static/assets/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+        { label: 'Chain-Reaction', bg: "url('./static/assets/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
     ];
-      
+    
     const carousel = document.getElementById('carousel');
     let currentExpandedItem = null;
-      
+
     carouselItems.forEach(({ label, bg, link }) => {
         const item = document.createElement('div');
         item.classList.add('car-item');
-      
+
+        // Create background overlay div
+        const bgOverlay = document.createElement('div');
+        bgOverlay.classList.add('bg-overlay');
+        bgOverlay.style.backgroundImage = bg;
+
         // Create the anchor element
         const anchor = document.createElement('a');
         anchor.textContent = label;
         anchor.href = link;
-        anchor.target = '_blank'; // optional: opens in new tab
-        anchor.style.color = 'inherit'; // optional: preserve text color
+        anchor.target = '_blank';
+        anchor.style.color = 'inherit';
         anchor.style.textDecoration = 'none';
-      
+
+        item.appendChild(bgOverlay);
         item.appendChild(anchor);
-      
-        if (bg) {
-          item.style.backgroundImage = bg;
-          item.style.backgroundSize = 'cover';
-          item.style.backgroundPosition = 'center';
-        }
-      
+
         item.addEventListener('click', (e) => {
-          // Avoid expanding when clicking the link
-          if (e.target.tagName.toLowerCase() === 'a') return;
-      
-          if (item.classList.contains('expanded')) {
-            item.classList.remove('expanded');
-            currentExpandedItem = null;
-          } else {
-            if (currentExpandedItem) {
-              currentExpandedItem.classList.remove('expanded');
+            if (e.target.tagName.toLowerCase() === 'a') return;
+
+            if (item.classList.contains('expanded')) {
+                item.classList.remove('expanded');
+                bgOverlay.style.opacity = '';
+                currentExpandedItem = null;
+            } else {
+                if (currentExpandedItem) {
+                    currentExpandedItem.classList.remove('expanded');
+                    currentExpandedItem.querySelector('.bg-overlay').style.opacity = '';
+                }
+                item.classList.add('expanded');
+                bgOverlay.style.opacity = '0.3';
+                currentExpandedItem = item;
             }
-            item.classList.add('expanded');
-            currentExpandedItem = item;
-          }
         });
-      
+
         carousel.appendChild(item);
     });
 }
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Example usage:
     const commands = [
-        { lineHeader: "randall@Randalls-MacBook ~ % ", line: "cd ./randall" },
+        { lineHeader: "randall@Randalls-MacBook ~ % ", line: "cd ./personal-website" },
         { lineHeader: "randall@Randalls-MacBook/randall ~ % ", line: "ls -la" },
-        { lineHeader: "randall@Randalls-MacBook/randall~ % ", line: "npm start" }
+        { lineHeader: "randall@Randalls-MacBook/randall~ % ", line: "npm run dev" }
     ];
 
     if (!localStorage.getItem('terminalSimulationCalled')) {
