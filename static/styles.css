@@ -202,27 +202,68 @@ a:hover {
   width: max-content;
 }
 
-.project {
+.project-link {
+  display: block;
   flex: 0 0 250px;
   height: 250px;
+  text-decoration: none;
+  position: relative;
   border-radius: 30px;
-  border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.252);
+  overflow: hidden; /* Prevent text and overlay from overflowing */
+}
+
+.project {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  color: white;
-  white-space: nowrap;
+  border: 2px solid white;
 }
+.project:hover {
+  opacity: 1;
+}
+
+.project .overlay {
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.573); /* Black overlay with 0.6 opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Ensure overlay is above the background but below text */
+}
+
+.project span {
+  position: relative;
+  z-index: 2; /* Ensure text is above the overlay */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; /* Optional for uppercase text */
+}
+
+
+
+
 
 .about-me {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .about-me-text {
-  max-width: 500px;
+  max-width: 600px;
+  min-width: 400px;
 }
 
 .me-img {
@@ -255,4 +296,20 @@ a:hover {
   transition: opacity 0.3s ease;
   z-index: 1;
   border-radius: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: rgb(0, 223, 0); /* You can change this */
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }

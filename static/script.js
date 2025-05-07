@@ -73,16 +73,56 @@ function runAfterTerminalSimulation() {
 function loadMoreProjects() {
     const track = document.getElementById('carousel-track');
     if (!track) return;
-    const cloneItems = () => {
-        const items = Array.from(track.children);
-        items.forEach(item => {
+
+    const projects = [
+        { label: 'Snake Game in C++', bg: "url('./static/assets/snake.png')", link: 'https://github.com/Dallss/Snake-Game' },
+        { label: 'Upload (under dev)', bg: "url('./static/assets/upload.png')", link: 'https://github.com/ctrlsolutions/upload' },
+        { label: 'Laymans-Law (under dev)', bg: "url('./static/assets/laymans.png')", link: 'https://github.com/ctrlsolutions/laymans-law' },
+        { label: '9 Mazes of Hell', bg: "url('./static/assets/mazesofhell.png')", link: 'https://github.com/DaRainFlavor/9-Mazes-of-Hell' },
+        { label: 'Budget-Co', bg: "url('./static/assets/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
+        { label: 'Connect-4', bg: "url('./static/assets/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+        { label: 'Chain-Reaction', bg: "url('./static/assets/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
+    ];
+
+    // Clear existing content
+    track.innerHTML = '';
+
+    // Create and append each project element
+    projects.forEach(({ label, bg, link }) => {
+        const anchor = document.createElement('a');
+        anchor.href = link;
+        anchor.target = '_blank'; // Open in new tab
+        anchor.rel = 'noopener noreferrer';
+        anchor.className = 'project-link';
+      
+        const project = document.createElement('div');
+        project.className = 'project';
+        project.style.backgroundImage = bg;
+        project.style.borderRadius = '30px';
+        project.style.opacity = 0.5;
+      
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+      
+        const projectName = document.createElement('span');
+        projectName.textContent = label;
+      
+        overlay.appendChild(projectName);
+        project.appendChild(overlay);
+        anchor.appendChild(project);
+        track.appendChild(anchor);
+      });
+
+    // Clone for infinite effect
+    const items = Array.from(track.children);
+    items.forEach(item => {
         const clone = item.cloneNode(true);
         track.appendChild(clone);
-        });
-    };
-    cloneItems();
+    });
+
     let scrollAmount = 0;
     let animationId;
+
     function scrollCarousel() {
         scrollAmount += 1.1;
         if (scrollAmount >= track.scrollWidth / 2) {
@@ -91,18 +131,22 @@ function loadMoreProjects() {
         track.style.transform = `translateX(-${scrollAmount}px)`;
         animationId = requestAnimationFrame(scrollCarousel);
     }
+
     function pauseCarousel() {
         cancelAnimationFrame(animationId);
     }
+
     function resumeCarousel() {
         animationId = requestAnimationFrame(scrollCarousel);
     }
+
     const wrapper = document.querySelector('.carousel-wrapper');
     wrapper.addEventListener('mouseenter', pauseCarousel);
     wrapper.addEventListener('mouseleave', resumeCarousel);
 
     resumeCarousel();
 }
+  
 
 function loadFeaturedProjects() {
     const carouselItems = [
