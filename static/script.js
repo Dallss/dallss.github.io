@@ -65,61 +65,56 @@ window.onload = function () {
 };
 
 
-
-    const carousel = document.getElementById('carousel');
-    let isScrolling = false;
-    let scrollTimeout;
-
-    let itemCount = 0;
-    
-    const items = document.getElementsByClassName('car-item')
-
-    for( let item of items) {
-
-        item.addEventListener('click', function() {
-
-            // TODO: fix broken bring into focus.
-            // if (!item.classList.contains('expanded')){
-            //     const childOffsetLeft = item.offsetLeft - carousel.offsetLeft;
-            //     const scrollX = childOffsetLeft;
-            //     if(scrollX > 0)
-            //     carousel.scrollTo({ left: scrollX, behavior: 'smooth' });
-                
-            // }
-          // if (isScrolling) return;
-            
-            // If this item is already expanded, collapse it
-            if (item.classList.contains('expanded')) {
-                item.classList.remove('expanded');
-                currentExpandedItem = null;
-            } else {
-                // Collapse any currently expanded item
-                if (currentExpandedItem) {
-                currentExpandedItem.classList.remove('expanded');
-                }
-                item.classList.add('expanded');
-                currentExpandedItem = item;
-            }
-        });
+const carouselItems = [
+    { label: 'RUBIKZ', bg: '', link: 'https://rubikz-i5pj.vercel.app/' },
+    { label: 'Budget-Co', bg: 'url(budget.jpg)', link: 'https://budget-co.up.railway.app/' },
+    { label: 'Connect-4', bg: '', link: 'https://example.com/connect4' },
+    { label: 'Chain-Reaction', bg: 'url(chain.jpg)', link: 'https://example.com/chain' }
+  ];
+  
+  const carousel = document.getElementById('carousel');
+  let currentExpandedItem = null;
+  
+  carouselItems.forEach(({ label, bg, link }) => {
+    const item = document.createElement('div');
+    item.classList.add('car-item');
+  
+    // Create the anchor element
+    const anchor = document.createElement('a');
+    anchor.textContent = label;
+    anchor.href = link;
+    anchor.target = '_blank'; // optional: opens in new tab
+    anchor.style.color = 'inherit'; // optional: preserve text color
+    anchor.style.textDecoration = 'none';
+  
+    item.appendChild(anchor);
+  
+    if (bg) {
+      item.style.backgroundImage = bg;
+      item.style.backgroundSize = 'cover';
+      item.style.backgroundPosition = 'center';
     }
-
-    // carousel.addEventListener('scroll', ()=>{
-    //     isScrolling = true;
-      
-    //   // Collapse any expanded item
-    //   if (currentExpandedItem) {
-    //     currentExpandedItem.classList.remove('expanded');
-    //     currentExpandedItem = null;
-    //   }
-      
-    //   // Clear previous timeout
-    //   clearTimeout(scrollTimeout);
-      
-    //   // Set timeout to reset scrolling flag
-    //   scrollTimeout = setTimeout(function() {
-    //     isScrolling = false;
-    //   }, 100);
-    // })
+  
+    item.addEventListener('click', (e) => {
+      // Avoid expanding when clicking the link
+      if (e.target.tagName.toLowerCase() === 'a') return;
+  
+      if (item.classList.contains('expanded')) {
+        item.classList.remove('expanded');
+        currentExpandedItem = null;
+      } else {
+        if (currentExpandedItem) {
+          currentExpandedItem.classList.remove('expanded');
+        }
+        item.classList.add('expanded');
+        currentExpandedItem = item;
+      }
+    });
+  
+    carousel.appendChild(item);
+  });
+  
+  
 
 
 document.addEventListener('DOMContentLoaded', () => {

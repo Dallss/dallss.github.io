@@ -157,7 +157,7 @@ html, body {
 }
 
 
-a {
+.section-link {
   color: white;
   text-decoration: none;
   font-family: 'geist', sans-serif;
@@ -175,14 +175,14 @@ a:hover {
 
 .section {
   width: 95%;
-  height: 75vh;
+  min-height: 75vh;
   font-size: 1rem;
   font-family: sans-serif;
   display: flex;
   flex-wrap: wrap;
 }
 
-#more-projects {
+.more-projects {
   width: 100%;
   box-sizing: border-box;
   display: flex;
