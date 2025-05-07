@@ -68,8 +68,8 @@ window.onload = function () {
 const carouselItems = [
     { label: 'RUBIKZ', bg: '', link: 'https://rubikz-i5pj.vercel.app/' },
     { label: 'Budget-Co', bg: 'url(budget.jpg)', link: 'https://budget-co.up.railway.app/' },
-    { label: 'Connect-4', bg: '', link: 'https://example.com/connect4' },
-    { label: 'Chain-Reaction', bg: 'url(chain.jpg)', link: 'https://example.com/chain' }
+    { label: 'Connect-4', bg: '', link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+    { label: 'Chain-Reaction', bg: 'url(chain.jpg)', link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
   ];
   
   const carousel = document.getElementById('carousel');
