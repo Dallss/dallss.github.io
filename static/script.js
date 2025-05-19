@@ -75,13 +75,13 @@ function loadMoreProjects() {
     if (!track) return;
 
     const projects = [
-        { label: 'Snake Game in C++', bg: "url('./static/assets/snake.png')", link: 'https://github.com/Dallss/Snake-Game' },
-        { label: 'Upload (under dev)', bg: "url('./static/assets/upload.png')", link: 'https://github.com/ctrlsolutions/upload' },
-        { label: 'Laymans-Law (under dev)', bg: "url('./static/assets/laymans.png')", link: 'https://github.com/ctrlsolutions/laymans-law' },
-        { label: '9 Mazes of Hell', bg: "url('./static/assets/mazesofhell.png')", link: 'https://github.com/DaRainFlavor/9-Mazes-of-Hell' },
-        { label: 'Budget-Co', bg: "url('./static/assets/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
-        { label: 'Connect-4', bg: "url('./static/assets/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
-        { label: 'Chain-Reaction', bg: "url('./static/assets/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
+        { label: 'Snake Game in C++', bg: "url('./static/images/snake.png')", link: 'https://github.com/Dallss/Snake-Game' },
+        { label: 'Upload (under dev)', bg: "url('./static/images/upload.png')", link: 'https://github.com/ctrlsolutions/upload' },
+        { label: 'Laymans-Law (under dev)', bg: "url('./static/images/laymans.png')", link: 'https://github.com/ctrlsolutions/laymans-law' },
+        { label: '9 Mazes of Hell', bg: "url('./static/images/mazesofhell.png')", link: 'https://github.com/DaRainFlavor/9-Mazes-of-Hell' },
+        { label: 'Budget-Co', bg: "url('./static/images/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
+        { label: 'Connect-4', bg: "url('./static/images/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+        { label: 'Chain-Reaction', bg: "url('./static/images/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
     ];
 
     // Clear existing content
@@ -150,10 +150,10 @@ function loadMoreProjects() {
 
 function loadFeaturedProjects() {
     const carouselItems = [
-        { label: 'RUBIKZ', bg: "url('./static/assets/rubikz.png')", link: 'https://rubikz-i5pj.vercel.app/' },
-        { label: 'Budget-Co', bg: "url('./static/assets/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
-        { label: 'Connect-4', bg: "url('./static/assets/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
-        { label: 'Chain-Reaction', bg: "url('./static/assets/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
+        { label: 'Budget-Co', bg: "url('./static/images/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
+        { label: 'RUBIKZ', bg: "url('./static/images/rubikz.png')", link: 'https://rubikz-i5pj.vercel.app/' },
+        { label: 'Connect-4', bg: "url('./static/images/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+        { label: 'Chain-Reaction', bg: "url('./static/images/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
     ];
     
     const carousel = document.getElementById('carousel');

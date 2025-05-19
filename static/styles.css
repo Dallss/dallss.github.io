@@ -52,7 +52,7 @@ html, body {
     flex-direction: column;
 
     padding-bottom: 100px;
-    background-image: url('./assets/noise.png');
+    background-image: url('./images/noise.png');
     background-size: 100% auto;
     background-repeat: repeat-y;
 
@@ -258,12 +258,20 @@ a:hover {
 .about-me {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between;background: radial-gradient(circle at center, #00000061, #39393900);
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .about-me-text {
   max-width: 600px;
   min-width: 400px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family:monospace;
+  letter-spacing: 0.05em; /* Or px/rem */
+  line-height: 1.6;
+  
 }
 
 .me-img {
@@ -302,12 +310,14 @@ a:hover {
   text-align: center;
   font-size: 1.5em;
   padding: 20px;
+  font-family:'Courier New', Courier, monospace;
 }
 
 .footer a {
   text-decoration: none;
   color: rgb(0, 223, 0); /* You can change this */
   margin: 0 10px;
+  font-family: 'Hind Jalandhar', sans-serif;
 }
 
 .footer a:hover {
