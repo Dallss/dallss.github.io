@@ -252,26 +252,28 @@ a:hover {
 }
 
 
-
-
-
 .about-me {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;background: radial-gradient(circle at center, #00000061, #39393900);
-  padding-top: 30px;
-  padding-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+
+  font-family:monospace;
 }
 
-.about-me-text {
+
+.narrative {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+
+.narrative-text {
   max-width: 600px;
   min-width: 400px;
   font-size: 14px;
   font-weight: 300;
-  font-family:monospace;
   letter-spacing: 0.05em; /* Or px/rem */
   line-height: 1.6;
-  
 }
 
 .me-img {
@@ -304,6 +306,23 @@ a:hover {
   transition: opacity 0.3s ease;
   z-index: 1;
   border-radius: 10px;
+}
+
+.skills {
+  display: flex;
+  align-items: center;
+}
+
+.skill {
+  width: 60px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.skills-h {
+  font-family:monospace;
+  font-size: 25px;
 }
 
 .footer {
