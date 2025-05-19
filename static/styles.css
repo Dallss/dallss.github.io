@@ -342,3 +342,172 @@ a:hover {
 .footer a:hover {
   text-decoration: underline;
 }
+
+/* Add media queries for responsiveness below */
+
+@media (max-width: 768px) {
+  /* Styles for screens smaller than 768px */
+  #main-content {
+    width: 95vw;
+    padding: 10vh 5vw;
+    overflow: hidden;
+  }
+
+  .greetings {
+    font-size: 2.8rem;
+  }
+
+  .sub {
+    font-size: 1.4rem;
+  }
+
+  .main-sub {
+    flex-direction: column;
+  }
+
+  .links {
+    width: 100%;
+    min-width: unset;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .section-link {
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .narrative {
+    flex-direction: column;
+    gap: 5vw;
+    align-items: center;
+  }
+
+  .narrative-text {
+    max-width: 95vw;
+    min-width: unset;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .me-img {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+  }
+
+  .skills-h {
+    font-size: 20px;
+  }
+
+  .skills {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .skill {
+    width: 50px;
+  }
+
+  .more-projects {
+    margin-bottom: 100px;
+  }
+
+  .carousel {
+    padding: 20px;
+    height: 300px;
+  }
+
+  .project-link {
+    flex: 0 0 200px;
+    height: 200px;
+  }
+
+  .footer h3 {
+    font-size: 1.3em;
+  }
+
+  .footer p {
+    font-size: 0.9em;
+  }
+
+  .footer a {
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for screens smaller than 480px */
+  #main-content {
+    padding: 8vh 3vw;
+  }
+
+  .greetings {
+    font-size: 2rem;
+  }
+
+  .sub {
+    font-size: 1.2rem;
+    height: 2.4rem;
+  }
+
+  .sub-wrapper {
+    height: 2.4rem;
+  }
+
+  .links {
+    margin-top: 5vw;
+  }
+
+  .section-link {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .narrative-text {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .me-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .skills-h {
+    font-size: 18px;
+  }
+
+  .skill {
+    width: 40px;
+    margin: 8px;
+  }
+
+  .more-projects {
+    margin-bottom: 80px;
+  }
+
+  .carousel {
+    padding: 15px;
+    height: 250px;
+  }
+
+  .project-link {
+    flex: 0 0 180px;
+    height: 180px;
+  }
+
+  .project span {
+    font-size: 16px;
+  }
+
+  .footer h3 {
+    font-size: 1.1em;
+  }
+
+  .footer p {
+    font-size: 0.8em;
+  }
+
+}
