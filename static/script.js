@@ -1,4 +1,10 @@
 // Functions
+function scrollToCenter(event, id) {
+    event.preventDefault(); // prevent default jump
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 function runTerminalSimulation(commands) {
     const container = document.getElementById("here");
     container.innerHTML = "";
@@ -99,7 +105,7 @@ function loadMoreProjects() {
         project.className = 'project';
         project.style.backgroundImage = bg;
         project.style.borderRadius = '30px';
-        project.style.opacity = 0.5;
+        project.style.opacity = 0.7;
       
         const overlay = document.createElement('div');
         overlay.className = 'overlay';
@@ -150,6 +156,7 @@ function loadMoreProjects() {
 
 function loadFeaturedProjects() {
     const carouselItems = [
+        { label: 'Path Finding Algo Simulator', bg: "url('./static/images/algo_simulator.png')", link: 'https://dallss.github.io/pathfinding-algorithms-visualizer/' },
         { label: 'Budget-Co', bg: "url('./static/images/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
         { label: 'RUBIKZ', bg: "url('./static/images/rubikz.png')", link: 'https://rubikz-i5pj.vercel.app/' },
         { label: 'Connect-4', bg: "url('./static/images/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },

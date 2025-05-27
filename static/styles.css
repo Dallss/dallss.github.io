@@ -146,7 +146,7 @@ html, body {
   padding: 20px;
   align-items: center;
   text-align: center;
-  writing-mode: vertical-rl; /* Vertical text when not expanded */
+  writing-mode: vertical-rl; 
 }
 
 .carousel > .expanded {
@@ -200,6 +200,10 @@ a:hover {
   display: flex;
   gap: 20px;
   width: max-content;
+  font-family: sans-serif;
+  margin-top: 70px;
+  font-size: 18px;
+  font-weight: 550;
 }
 
 .project-link {
@@ -245,8 +249,6 @@ a:hover {
   position: relative;
   z-index: 2; /* Ensure text is above the overlay */
   color: white;
-  font-size: 20px;
-  font-weight: bold;
   text-align: center;
   text-transform: uppercase; /* Optional for uppercase text */
 }
@@ -265,6 +267,7 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2vw;
+  padding-top: 20px;
 }
 
 .narrative-text {
