@@ -1,1 +1,1 @@
-link: https://github.com/Dallss/dallss.github.io
+link: https://dallss.github.io/
