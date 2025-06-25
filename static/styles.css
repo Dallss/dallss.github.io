@@ -52,11 +52,12 @@ html, body {
     flex-direction: column;
 
     background-color: rgb(0, 0, 0);
-    padding-bottom: 100px;
     background-image: url('./images/noise.png');
     background-size: 100% auto;
     background-repeat: repeat-y;
     height: min-content;
+    position: relative;
+    padding-bottom: 300px;
 }
 
 #more-projects-link {
@@ -72,9 +73,9 @@ html, body {
   /* pass */
 }
 .greetings {
-  font-family: 'Hind Jalandhar', sans-serif;
-  font-weight: 320;
-  font-size: 4rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 4.2rem;
   margin: 0;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -167,7 +168,7 @@ html, body {
 }
 
 .section-title {
-  font-family: 'geist', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: xx-large;
   font-weight: 500;
 }
@@ -231,7 +232,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.423);
 }
 .project:hover {
   opacity: 1;
@@ -264,18 +265,41 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family:monospace;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #0E1117;
+  border-radius: 10px;
+  width: 109%;
+  margin-left: -4.5%;
+  height: 700px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-
 
 .narrative {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2vw;
   padding-top: 20px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.readme-container {
+  flex: 1;
+}
+.readme {
+  border: 0.5px solid rgba(255, 255, 255, 0.253);
+  border-radius: 8px;
+  width: 100% !important;
+}
+
+.profile {
+  width: 30%;
+  margin: 0;
+  padding: 20px;
+  padding-left: 0;
 }
 
 .narrative-text {
+  box-sizing: border-box;
   max-width: 600px;
   min-width: 400px;
   font-size: 16px;
@@ -286,11 +310,10 @@ a:hover {
 
 .me-img {
   flex: 1;
-  width: 300px;
-  height: 300px;
-  margin: 20px;
-  border-radius: 5px;
-  border: 1px solid white;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 500px;
+  border: 0.2px solid rgba(255, 255, 255, 0.222);
 }
 
 .car-item {
@@ -335,23 +358,39 @@ a:hover {
 }
 
 .footer {
+  background-color: #000000; /* dark slate */
+  color: #f8fafc; /* light text */
+  padding: 2rem;
   text-align: center;
-  font-size: 1.5em;
-  padding: 20px;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Inter', sans-serif;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
 }
 
 .footer a {
+  color: #61c284; /* green-500 */
   text-decoration: none;
-  color: rgb(0, 223, 0); /* You can change this */
-  margin: 0 10px;
-  font-family: 'Hind Jalandhar', sans-serif;
+  transition: color 0.3s ease;
 }
 
 .footer a:hover {
+  color: #4ade80; /* green-400 */
   text-decoration: underline;
 }
-
 /* Add media queries for responsiveness below */
 
 @media (max-width: 768px) {

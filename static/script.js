@@ -69,7 +69,14 @@ function runAfterTerminalSimulation() {
             items[0].click()
         }
     },700)
-    
+
+    loadGitHubProfile("dallss", "github-profile");
+    const reame_url = 'https://raw.githubusercontent.com/Dallss/Dallss/refs/heads/main/README.md'
+    fetch(reame_url)
+    .then(res => res.text())
+    .then(md => {
+      document.getElementById('markdown').innerHTML = marked.parse(md);
+    });
 
     const slider = document.getElementById('slider');
     const sitems = slider.children;
