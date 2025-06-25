@@ -40,22 +40,22 @@ html, body {
     display: none;
     width: 85vw;
     margin-top: 10vh;
-    padding: 15vh;
+    padding: 100px;
+    padding-top: 15vh;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    border: 3px solid white;
-    border-bottom: 2px solid white;
+    border: 0.5px solid black;
     color: white;
     display: flex;
     flex-direction: column;
 
+    background-color: rgb(0, 0, 0);
     padding-bottom: 100px;
     background-image: url('./images/noise.png');
     background-size: 100% auto;
     background-repeat: repeat-y;
-
     height: min-content;
 }
 
@@ -69,18 +69,18 @@ html, body {
 }
 
 .header {
-  margin-bottom: 5vw;
-  /* border: 1px solid white; */
-
+  /* pass */
 }
 .greetings {
   font-family: 'Hind Jalandhar', sans-serif;
-  font-weight: 200;
-  font-size: 3.8rem;
+  font-weight: 320;
+  font-size: 4rem;
   margin: 0;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 .sub-wrapper {
-  height: 2.8rem; /* height of one line */
+  height: 2.8rem;
   overflow: hidden;
   position: relative;
 }
@@ -114,7 +114,7 @@ html, body {
   flex-direction: column;
   min-width: 400px;
   margin-top: 3vw;
-  margin-left: 1rem;
+
 
 }
 .carousel {
@@ -136,10 +136,9 @@ html, body {
   flex-shrink: 0;
   width: 70px;
   height: 100%;
-  border: 1px solid white;
   font-size: large;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.252);
+  background-color: rgba(0, 0, 0, 0.527);
   transition: 0.6s ease, padding 0.3s ease;
   display: flex;
   justify-content: flex-start;
@@ -156,30 +155,37 @@ html, body {
   justify-content: flex-start;
 }
 
-
 .section-link {
   color: white;
   text-decoration: none;
   font-family: 'geist', sans-serif;
   font-size: 1.3rem;
   font-weight: 200;
-  margin-left: 3vw;
+
   margin-bottom: 1.2rem;
   width: fit-content;
 }
 
+.section-title {
+  font-family: 'geist', sans-serif;
+  font-size: xx-large;
+  font-weight: 500;
+}
 a:hover {
   text-shadow: 0 0 10px #01ae12aa, 0 0 20px #01ae12aa, 0 0 30px #01ae12aa, 0 0 40px #01ae12aa;
 }
 
 
 .section {
-  width: 95%;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 75vh;
   font-size: 1rem;
   font-family: sans-serif;
   display: flex;
   flex-wrap: wrap;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .more-projects {
@@ -258,7 +264,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   font-family:monospace;
 }
 
@@ -273,7 +278,7 @@ a:hover {
 .narrative-text {
   max-width: 600px;
   min-width: 400px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.05em; /* Or px/rem */
   line-height: 1.6;
@@ -285,6 +290,7 @@ a:hover {
   height: 300px;
   margin: 20px;
   border-radius: 5px;
+  border: 1px solid white;
 }
 
 .car-item {

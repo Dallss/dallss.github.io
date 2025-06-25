@@ -62,10 +62,14 @@ async function typeLine(line, container, cursor) {
     });
 }
 function runAfterTerminalSimulation() {
-    const items = document.getElementsByClassName('car-item');
-    if (items[0]) {
-        items[0].click()
-    }
+    
+    setTimeout(()=>{
+        const items = document.getElementsByClassName('car-item');
+        if (items[0]) {
+            items[0].click()
+        }
+    },700)
+    
 
     const slider = document.getElementById('slider');
     const sitems = slider.children;
@@ -227,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("main-content").style.display = "block";
         setTimeout(()=>{
             runAfterTerminalSimulation();
-        },500)
+        },0)
     }
     
     loadMoreProjects();
