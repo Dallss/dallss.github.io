@@ -82,9 +82,23 @@ function runAfterTerminalSimulation() {
     const sitems = slider.children;
     let index = 0;
     const total = sitems.length;
+    
+    // Function to get the correct slide height based on screen size
+    function getSlideHeight() {
+      const firstItem = sitems[0];
+      if (firstItem) {
+        return firstItem.offsetHeight;
+      }
+      // Fallback values based on screen size
+      if (window.innerWidth <= 375) return 32; // 2rem
+      if (window.innerWidth <= 480) return 35.2; // 2.2rem
+      return 44.8; // 2.8rem for desktop
+    }
+    
     setInterval(() => {
       index = (index + 1) % total;
-      slider.style.transform = `translateY(-${index * 2.8}rem)`;
+      const slideHeight = getSlideHeight();
+      slider.style.transform = `translateY(-${index * slideHeight}px)`;
     }, 3000); // change every 3 seconds
 }
 function loadMoreProjects() {
@@ -197,8 +211,10 @@ function loadFeaturedProjects() {
         item.appendChild(bgOverlay);
         item.appendChild(anchor);
 
-        item.addEventListener('click', (e) => {
+        // Handle both click and touch events for better mobile support
+        const handleInteraction = (e) => {
             if (e.target.tagName.toLowerCase() === 'a') return;
+            e.preventDefault();
 
             if (item.classList.contains('expanded')) {
                 item.classList.remove('expanded');
@@ -213,7 +229,10 @@ function loadFeaturedProjects() {
                 bgOverlay.style.opacity = '0.3';
                 currentExpandedItem = item;
             }
-        });
+        };
+
+        item.addEventListener('click', handleInteraction);
+        item.addEventListener('touchstart', handleInteraction, { passive: false });
 
         carousel.appendChild(item);
     });

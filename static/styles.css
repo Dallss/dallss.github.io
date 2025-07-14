@@ -130,6 +130,7 @@ html, body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
   position: relative;
+  -webkit-overflow-scrolling: touch;
   
 }
 
@@ -185,8 +186,8 @@ a:hover {
   font-family: sans-serif;
   display: flex;
   flex-wrap: wrap;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 0; /* Remove left padding */
+  padding-right: 0; /* Remove right padding */
 }
 
 .more-projects {
@@ -211,6 +212,7 @@ a:hover {
   margin-top: 70px;
   font-size: 18px;
   font-weight: 550;
+  -webkit-overflow-scrolling: touch;
 }
 
 .project-link {
@@ -300,7 +302,7 @@ a:hover {
   display: flex;
   padding-top: 20px;
   width: 100%;
-  padding: 2rem;
+  padding: 0; /* Remove all padding */
   overflow-y: scroll;
 }
 
@@ -365,13 +367,21 @@ a:hover {
 .skills {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Left align */
+  gap: 15px;
 }
 
 .skill {
   width: 60px;
-  aspect-ratio: 1/1;
+  height: 60px;
   border-radius: 10px;
-  margin: 10px;
+  margin: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
 }
 
 .skills-h {
@@ -418,21 +428,26 @@ a:hover {
 @media (max-width: 768px) {
   /* Styles for screens smaller than 768px */
   #main-content {
-    width: 95vw;
-    padding: 10vh 5vw;
-    overflow: hidden;
+    width: 100vw;
+    padding: 5vh 3vw;
+    overflow-x: hidden;
+    margin-top: 5vh;
+    border-radius: 20px;
   }
 
   .greetings {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    text-align: center;
   }
 
   .sub {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    text-align: center;
   }
 
   .main-sub {
     flex-direction: column;
+    gap: 20px;
   }
 
   .links {
@@ -440,12 +455,20 @@ a:hover {
     min-width: unset;
     margin-left: 0;
     align-items: center;
+    order: 2;
   }
 
   .section-link {
     font-size: 1.1rem;
     margin-left: 0;
     margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section {
+    padding-left: 0;
+    padding-right: 0;
+    min-height: auto;
   }
 
   .narrative {
@@ -474,24 +497,42 @@ a:hover {
   .skills {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
   }
 
   .skill {
     width: 50px;
+    height: 50px;
   }
 
   .more-projects {
     margin-bottom: 100px;
+    margin-top: 30px;
   }
 
   .carousel {
-    padding: 20px;
-    height: 300px;
+    padding: 15px;
+    height: 280px;
+    min-width: unset;
+    width: 100%;
+    order: 1;
+  }
+
+  .carousel > * {
+    width: 60px;
+    min-width: 60px;
+    font-size: 14px;
+    padding: 15px 10px;
+  }
+
+  .carousel > .expanded {
+    width: 250px;
+    min-width: 250px;
   }
 
   .project-link {
-    flex: 0 0 200px;
-    height: 200px;
+    flex: 0 0 180px;
+    height: 180px;
   }
 
   .footer h3 {
@@ -505,34 +546,100 @@ a:hover {
   .footer a {
     margin: 0 5px;
   }
+
+  .about-me {
+    padding: 20px;
+  }
+
+  .about-me-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .readme-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .readme {
+    padding: 1rem !important;
+    font-size: 14px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Prevent code blocks from overflowing */
+  .readme pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .readme code {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure tables don't overflow */
+  .readme table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .readme img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .profile {
+    width: 100%;
+    max-width: 100%;
+    display: none; /* Hide profile on mobile */
+  }
+
+  .readme-container {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   /* Styles for screens smaller than 480px */
   #main-content {
-    padding: 8vh 3vw;
+    padding: 3vh 2vw;
+    margin-top: 2vh;
   }
 
   .greetings {
     font-size: 2rem;
+    line-height: 1.2;
   }
 
   .sub {
-    font-size: 1.2rem;
-    height: 2.4rem;
+    font-size: 1.1rem;
+    height: 2.2rem;
   }
 
   .sub-wrapper {
-    height: 2.4rem;
+    height: 2.2rem;
   }
 
   .links {
-    margin-top: 5vw;
+    margin-top: 3vw;
   }
 
   .section-link {
     font-size: 1rem;
     margin-bottom: 0.8rem;
+  }
+
+  .section {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .narrative-text {
@@ -551,25 +658,39 @@ a:hover {
 
   .skill {
     width: 40px;
-    margin: 8px;
+    height: 40px;
+    margin: 0;
   }
 
   .more-projects {
     margin-bottom: 80px;
+    margin-top: 20px;
   }
 
   .carousel {
-    padding: 15px;
+    padding: 10px;
     height: 250px;
   }
 
+  .carousel > * {
+    width: 50px;
+    min-width: 50px;
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .carousel > .expanded {
+    width: 200px;
+    min-width: 200px;
+  }
+
   .project-link {
-    flex: 0 0 180px;
-    height: 180px;
+    flex: 0 0 160px;
+    height: 160px;
   }
 
   .project span {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .footer h3 {
@@ -580,4 +701,185 @@ a:hover {
     font-size: 0.8em;
   }
 
+  .about-me {
+    padding: 15px;
+  }
+
+  .readme {
+    padding: 0.5rem !important;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Prevent code blocks from overflowing */
+  .readme pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .readme code {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure tables don't overflow */
+  .readme table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .readme img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .profile {
+    display: none; /* Keep profile hidden on small mobile */
+  }
+
+  .carousel-track {
+    gap: 15px;
+    margin-top: 50px;
+  }
+}
+
+/* Add touch-friendly styles for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .carousel > * {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .carousel > *:active {
+    transform: scale(0.95);
+  }
+
+  .section-link {
+    padding: 8px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .section-link:active {
+    opacity: 0.7;
+  }
+
+  .project-link:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+  #main-content {
+    padding: 2vh 1vw;
+  }
+
+  .greetings {
+    font-size: 1.8rem;
+  }
+
+  .sub {
+    font-size: 1rem;
+    height: 2rem;
+  }
+
+  .sub-wrapper {
+    height: 2rem;
+  }
+
+  .carousel {
+    height: 220px;
+    padding: 8px;
+  }
+
+  .carousel > * {
+    width: 45px;
+    min-width: 45px;
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+
+  .carousel > .expanded {
+    width: 180px;
+    min-width: 180px;
+  }
+
+  .project-link {
+    flex: 0 0 140px;
+    height: 140px;
+  }
+
+  .project span {
+    font-size: 12px;
+  }
+
+  .section-link {
+    font-size: 0.9rem;
+  }
+
+  .readme {
+    font-size: 11px !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Prevent code blocks from overflowing */
+  .readme pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .readme code {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure tables don't overflow */
+  .readme table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .readme img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .profile {
+    display: none; /* Keep profile hidden on extra small mobile */
+  }
+
+  .skills {
+    gap: 10px;
+  }
+
+  .skill {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Improve carousel scrolling on mobile */
+.carousel {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel > * {
+  scroll-snap-align: start;
 }
