@@ -102,8 +102,8 @@ function runAfterTerminalSimulation() {
     }, 3000); // change every 3 seconds
 }
 function loadMoreProjects() {
-    const track = document.getElementById('carousel-track');
-    if (!track) return;
+    const grid = document.getElementById('projects-grid');
+    if (!grid) return;
 
     const projects = [
         { label: 'Snake Game in C++', bg: "url('./static/images/snake.png')", link: 'https://github.com/Dallss/Snake-Game' },
@@ -116,7 +116,7 @@ function loadMoreProjects() {
     ];
 
     // Clear existing content
-    track.innerHTML = '';
+    grid.innerHTML = '';
 
     // Create and append each project element
     projects.forEach(({ label, bg, link }) => {
@@ -129,7 +129,7 @@ function loadMoreProjects() {
         const project = document.createElement('div');
         project.className = 'project';
         project.style.backgroundImage = bg;
-        project.style.borderRadius = '30px';
+        project.style.borderRadius = '20px';
         project.style.opacity = 0.7;
       
         const overlay = document.createElement('div');
@@ -141,41 +141,8 @@ function loadMoreProjects() {
         overlay.appendChild(projectName);
         project.appendChild(overlay);
         anchor.appendChild(project);
-        track.appendChild(anchor);
-      });
-
-    // Clone for infinite effect
-    const items = Array.from(track.children);
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        track.appendChild(clone);
+        grid.appendChild(anchor);
     });
-
-    let scrollAmount = 0;
-    let animationId;
-
-    function scrollCarousel() {
-        scrollAmount += 1.1;
-        if (scrollAmount >= track.scrollWidth / 2) {
-        scrollAmount = 0;
-        }
-        track.style.transform = `translateX(-${scrollAmount}px)`;
-        animationId = requestAnimationFrame(scrollCarousel);
-    }
-
-    function pauseCarousel() {
-        cancelAnimationFrame(animationId);
-    }
-
-    function resumeCarousel() {
-        animationId = requestAnimationFrame(scrollCarousel);
-    }
-
-    const wrapper = document.querySelector('.carousel-wrapper');
-    wrapper.addEventListener('mouseenter', pauseCarousel);
-    wrapper.addEventListener('mouseleave', resumeCarousel);
-
-    resumeCarousel();
 }
   
 

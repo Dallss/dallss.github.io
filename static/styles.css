@@ -194,35 +194,35 @@ a:hover {
   width: 100%;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   height: fit-content;
   margin-top: 50px;
   margin-bottom: 200px;
 }
 
-.carousel-wrapper {
-  overflow: hidden;
-  width: 100%;
-}
-
-.carousel-track {
-  display: flex;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
   gap: 20px;
-  width: max-content;
+  justify-content: center;
+  margin-top: 30px;
   font-family: sans-serif;
-  margin-top: 70px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 550;
-  -webkit-overflow-scrolling: touch;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70vw;
 }
 
 .project-link {
   display: block;
-  flex: 0 0 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   text-decoration: none;
   position: relative;
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: hidden; /* Prevent text and overlay from overflowing */
+  font-size: 14px;
 }
 
 .project {
@@ -241,7 +241,7 @@ a:hover {
 }
 
 .project .overlay {
-  border-radius: 30px;
+  border-radius: 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -510,6 +510,17 @@ a:hover {
     margin-top: 30px;
   }
 
+  .projects-grid {
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+  }
+
   .carousel {
     padding: 15px;
     height: 280px;
@@ -531,8 +542,8 @@ a:hover {
   }
 
   .project-link {
-    flex: 0 0 180px;
-    height: 180px;
+    flex: 0 0 150px;
+    height: 150px;
   }
 
   .footer h3 {
@@ -667,6 +678,17 @@ a:hover {
     margin-top: 20px;
   }
 
+  .projects-grid {
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 130px);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+  }
+
   .carousel {
     padding: 10px;
     height: 250px;
@@ -685,8 +707,8 @@ a:hover {
   }
 
   .project-link {
-    flex: 0 0 160px;
-    height: 160px;
+    flex: 0 0 130px;
+    height: 130px;
   }
 
   .project span {
@@ -742,10 +764,7 @@ a:hover {
     display: none; /* Keep profile hidden on small mobile */
   }
 
-  .carousel-track {
-    gap: 15px;
-    margin-top: 50px;
-  }
+
 }
 
 /* Add touch-friendly styles for mobile */
@@ -815,9 +834,20 @@ html, body {
     min-width: 180px;
   }
 
+  .projects-grid {
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+  }
+
   .project-link {
-    flex: 0 0 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
   }
 
   .project span {
