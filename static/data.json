@@ -1,0 +1,75 @@
+{
+   "projects": [
+     {
+       "label": "Path Finding Sim",
+       "bg": "./static/images/algo_simulator.png",
+       "link": "https://dallss.github.io/pathfinding-algorithms-visualizer/",
+       "featured": true,
+       "tags": []
+     },
+     {
+       "label": "ProbSim",
+       "bg": "./static/images/probsim.png",
+       "link": "https://dallss.github.io/ProbSim/",
+       "featured": true,
+       "tags": []
+     },
+     {
+       "label": "RUBIKZ",
+       "bg": "./static/images/rubikz.png",
+       "link": "https://rubikz.vercel.app/",
+       "featured": true,
+       "tags": []
+     },
+     {
+       "label": "Connect-4",
+       "bg": "./static/images/connect.png",
+       "link": "https://dallss.github.io/Minimax-Applications/connect-4",
+       "featured": true,
+       "tags": []
+     },
+     {
+       "label": "Chain-Reaction",
+       "bg": "./static/images/chain.png",
+       "link": "https://dallss.github.io/Minimax-Applications/chain-reaction",
+       "featured": true,
+       "tags": []
+     },
+     {
+       "label": "Snake Game",
+       "bg": "./static/images/snake.png",
+       "link": "https://github.com/Dallss/Snake-Game",
+       "featured": false,
+       "tags": []
+     },
+     {
+       "label": "Upload",
+       "bg": "./static/images/upload.png",
+       "link": "https://github.com/ctrlsolutions/upload",
+       "featured": false,
+       "tags": []
+     },
+     {
+       "label": "Budget-Co",
+       "bg": "./static/images/budgetco.png",
+       "link": "https://budget-co.up.railway.app/",
+       "featured": false,
+       "tags": []
+     },
+     {
+       "label": "Laymans-Law",
+       "bg": "./static/images/laymans.png",
+       "link": "https://github.com/ctrlsolutions/laymans-law",
+       "featured": false,
+       "tags": []
+     },
+     {
+       "label": "9 Mazes of Hell",
+       "bg": "./static/images/mazesofhell.png",
+       "link": "https://github.com/DaRainFlavor/9-Mazes-of-Hell",
+       "featured": false,
+       "tags": []
+     }
+   ]
+ }
+ 
