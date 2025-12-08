@@ -8,14 +8,16 @@ const featured_projects = [
     { label: 'Chain-Reaction', bg: "url('./static/images/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
 ];
 
-const other_projects = [
+const all_projects = [
     { label: 'Snake Game', bg: "url('./static/images/snake.png')", link: 'https://github.com/Dallss/Snake-Game' },
     { label: 'Upload', bg: "url('./static/images/upload.png')", link: 'https://github.com/ctrlsolutions/upload' },
     { label: 'Budget-Co', bg: "url('./static/images/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
     { label: 'Laymans-Law', bg: "url('./static/images/laymans.png')", link: 'https://github.com/ctrlsolutions/laymans-law' },
     { label: '9 Mazes of Hell', bg: "url('./static/images/mazesofhell.png')", link: 'https://github.com/DaRainFlavor/9-Mazes-of-Hell' },
-    { label: 'Budget-Co', bg: "url('./static/images/budgetco.png')", link: 'https://budget-co.up.railway.app/' },
     { label: 'Connect-4', bg: "url('./static/images/connect.png')", link: 'https://dallss.github.io/Minimax-Applications/connect-4' },
+    { label: 'Path Finding Sim', bg: "url('./static/images/algo_simulator.png')", link: 'https://dallss.github.io/pathfinding-algorithms-visualizer/' },
+    { label: 'ProbSim', bg: "url('./static/images/probsim.png')", link: "https://dallss.github.io/ProbSim/"},
+    { label: 'RUBIKZ', bg: "url('./static/images/rubikz.png')", link: 'https://rubikz.vercel.app/' },
     { label: 'Chain-Reaction', bg: "url('./static/images/chain.png')", link: 'https://dallss.github.io/Minimax-Applications/chain-reaction' }
 ];
 
@@ -128,7 +130,7 @@ function loadMoreProjects() {
     const grid = document.getElementById('projects-grid');
     if (!grid) return;
 
-    const projects = other_projects;
+    const projects = all_projects;
 
     // Clear existing content
     grid.innerHTML = '';
@@ -144,7 +146,7 @@ function loadMoreProjects() {
         const project = document.createElement('div');
         project.className = 'project';
         project.style.backgroundImage = bg;
-        project.style.borderRadius = '20px';
+        project.style.borderRadius = '10px';
         project.style.opacity = 0.7;
       
         const overlay = document.createElement('div');

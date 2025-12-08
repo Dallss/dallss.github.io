@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Randall Alquicer</title>
   <script src="./github-profile.js?v=1"></script>
+  <script src="./static/filter.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="./static/styles.css?v=1">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Jalandhar&display=swap" rel="stylesheet">
@@ -42,9 +43,25 @@
       </div>
     </div>
     <div class="more-projects" id="more-projects">
+      <div class="sidebar">
+        <div class="filter-title">Filter</div>
+        <div class="search-box">
+          <input
+            type="text"
+            id="filter-input"
+            placeholder="Search filters..."
+            oninput="showDropdown()"
+            onfocus="showDropdown()"
+          />
+      
+          <div class="dropdown" id="dropdown"></div>
+        </div>
+        <div class="hairline"></div>
+        <div id="selected-tags"></div>
+
+      </div>
       <div class="projects-grid" id="projects-grid"></div>
     </div>
-
     <div class="about-me" id="aboutme">
       <div class="about-me-header">
         <img src="./static/images/github-white-icon.png" alt="Randall Alquicer" style="width: 40px; height: 40px;">
