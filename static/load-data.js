@@ -1,5 +1,5 @@
 let PROJECTS = []; // loaded from JSON
-
+let COLORS = [];
 // -------- FETCH THE JSON -------- //
 async function loadProjectsJSON() {
     try {
@@ -8,22 +8,35 @@ async function loadProjectsJSON() {
         PROJECTS = data.projects;
         console.log("Loaded Projects:", PROJECTS);
 
-        loadMoreProjects();
-        loadFeaturedProjects();
+        COLORS = data.tagColors;
+
+        RenderMoreProjects();
+        RenderFeaturedProjects();
     } catch (err) {
         console.error("Failed to load projects.json:", err);
     }
 }
 
-function loadMoreProjects() {
+function RenderMoreProjects( filters = [] ) {
+
+    console.log("render");
     const grid = document.getElementById("projects-grid");
     if (!grid || PROJECTS.length === 0) return;
 
+    // Remove only existing project links
+    const existingProjects = grid.querySelectorAll(".project-link");
+    existingProjects.forEach(el => el.remove());
+
     const nonFeatured = PROJECTS;
 
-    grid.innerHTML = "";
+    nonFeatured.forEach(({ label, bg, link, tags }) => {
 
-    nonFeatured.forEach(({ label, bg, link }) => {
+        if(filters.length > 0){
+            const matches = filters.every(filter => tags.includes(filter));
+            if (!matches) return;
+        }
+        
+
         const anchor = document.createElement("a");
         anchor.href = link;
         anchor.target = "_blank";
@@ -46,17 +59,31 @@ function loadMoreProjects() {
         project.appendChild(overlay);
         anchor.appendChild(project);
         grid.appendChild(anchor);
+
+        // Render tags
+        const tagsContainer = document.createElement("div");
+        tagsContainer.className = "tags-container";
+        overlay.appendChild(tagsContainer);
+
+        tags.forEach((tag) => {
+            const tagdiv = document.createElement("div");
+            tagdiv.className = "tag-icon";
+            tagdiv.title = tag;
+            tagdiv.style.backgroundColor = COLORS[tag];
+            tagsContainer.appendChild(tagdiv);
+        });
     });
 }
 
-function loadFeaturedProjects() {
+
+function RenderFeaturedProjects() {
     const featuredItems = PROJECTS.filter(p => p.featured);
     const carousel = document.getElementById("carousel");
     let currentExpandedItem = null;
 
     carousel.innerHTML = "";
 
-    featuredItems.forEach(({ label, bg, link }) => {
+    featuredItems.forEach(({ label, bg, link, tags}) => {
         const item = document.createElement("div");
         item.classList.add("car-item");
 
@@ -108,3 +135,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load JSON → then load UI
     loadProjectsJSON();
 });
+
+// Expose module functions globally for HTML inline handlers
+window.loadProjectsJSON = loadProjectsJSON;
+window.RenderMoreProjects = RenderMoreProjects;
+window.RenderFeaturedProjects = RenderFeaturedProjects;
+
+export { 
+    loadProjectsJSON, 
+    RenderMoreProjects, 
+    RenderFeaturedProjects 
+};

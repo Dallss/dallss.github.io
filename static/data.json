@@ -1,75 +1,99 @@
 {
-   "projects": [
-     {
-       "label": "Path Finding Sim",
-       "bg": "./static/images/algo_simulator.png",
-       "link": "https://dallss.github.io/pathfinding-algorithms-visualizer/",
-       "featured": true,
-       "tags": []
-     },
-     {
-       "label": "ProbSim",
-       "bg": "./static/images/probsim.png",
-       "link": "https://dallss.github.io/ProbSim/",
-       "featured": true,
-       "tags": []
-     },
-     {
-       "label": "RUBIKZ",
-       "bg": "./static/images/rubikz.png",
-       "link": "https://rubikz.vercel.app/",
-       "featured": true,
-       "tags": []
-     },
-     {
-       "label": "Connect-4",
-       "bg": "./static/images/connect.png",
-       "link": "https://dallss.github.io/Minimax-Applications/connect-4",
-       "featured": true,
-       "tags": []
-     },
-     {
-       "label": "Chain-Reaction",
-       "bg": "./static/images/chain.png",
-       "link": "https://dallss.github.io/Minimax-Applications/chain-reaction",
-       "featured": true,
-       "tags": []
-     },
-     {
-       "label": "Snake Game",
-       "bg": "./static/images/snake.png",
-       "link": "https://github.com/Dallss/Snake-Game",
-       "featured": false,
-       "tags": []
-     },
-     {
-       "label": "Upload",
-       "bg": "./static/images/upload.png",
-       "link": "https://github.com/ctrlsolutions/upload",
-       "featured": false,
-       "tags": []
-     },
-     {
-       "label": "Budget-Co",
-       "bg": "./static/images/budgetco.png",
-       "link": "https://budget-co.up.railway.app/",
-       "featured": false,
-       "tags": []
-     },
-     {
-       "label": "Laymans-Law",
-       "bg": "./static/images/laymans.png",
-       "link": "https://github.com/ctrlsolutions/laymans-law",
-       "featured": false,
-       "tags": []
-     },
-     {
-       "label": "9 Mazes of Hell",
-       "bg": "./static/images/mazesofhell.png",
-       "link": "https://github.com/DaRainFlavor/9-Mazes-of-Hell",
-       "featured": false,
-       "tags": []
-     }
-   ]
- }
- 
+  "projects": [
+    {
+      "label": "Path Finding Sim",
+      "bg": "./static/images/algo_simulator.png",
+      "link": "https://dallss.github.io/pathfinding-algorithms-visualizer/",
+      "featured": true,
+      "tags": ["deployed", "simulator", "javascript", "educational"]
+    },
+    {
+      "label": "ProbSim",
+      "bg": "./static/images/probsim.png",
+      "link": "https://dallss.github.io/ProbSim/",
+      "featured": true,
+      "tags": ["deployed", "simulator", "javascript", "educational"]
+    },
+    {
+      "label": "Brave Heart",
+      "bg": "./static/images/braveheart.png",
+      "link": "https://braveheart-firesafety.netlify.app/",
+      "featured": true,
+      "tags": ["deployed", "react", "asp"]
+    },
+    {
+      "label": "RUBIKZ",
+      "bg": "./static/images/rubikz.png",
+      "link": "https://rubikz.vercel.app/",
+      "featured": true,
+      "tags": ["deployed", "simulator", "javascript", "game"]
+    },
+    {
+      "label": "Connect-4",
+      "bg": "./static/images/connect.png",
+      "link": "https://dallss.github.io/Minimax-Applications/connect-4",
+      "featured": false,
+      "tags": ["deployed", "simulator", "javascript", "game", "ai"]
+    },
+    {
+      "label": "Chain-Reaction",
+      "bg": "./static/images/chain.png",
+      "link": "https://dallss.github.io/Minimax-Applications/chain-reaction",
+      "featured": false,
+      "tags": ["deployed", "javascript", "game", "ai"]
+    },
+    {
+      "label": "Snake Game",
+      "bg": "./static/images/snake.png",
+      "link": "https://github.com/Dallss/Snake-Game",
+      "featured": false,
+      "tags": ["c++", "game"]
+    },
+    {
+      "label": "Upload",
+      "bg": "./static/images/upload.png",
+      "link": "https://github.com/ctrlsolutions/upload",
+      "featured": false,
+      "tags": ["team project", "django", "vue"]
+    },
+    {
+      "label": "Budget-Co",
+      "bg": "./static/images/budgetco.png",
+      "link": "https://budget-co.up.railway.app/",
+      "featured": false,
+      "tags": ["team project", "django", "vibe coded"]
+    },
+    {
+      "label": "Laymans-Law",
+      "bg": "./static/images/laymans.png",
+      "link": "https://github.com/ctrlsolutions/laymans-law",
+      "featured": false,
+      "tags": ["team project", "nextjs", "django"]
+    },
+    {
+      "label": "9 Mazes of Hell",
+      "bg": "./static/images/mazesofhell.png",
+      "link": "https://github.com/DaRainFlavor/9-Mazes-of-Hell",
+      "featured": false,
+      "tags": ["game", "javascript", "team project"]
+    }
+  ],
+
+  "tagColors": {
+    "c++": "#1f6feb",
+    "python": "#FDD835",
+    "javascript": "#eab308",
+    "deployed": "#238636",
+    "ai": "#bf40bf",
+    "team project": "#54aeff",
+    "simulator": "#db6d28",
+    "game": "#d1242f",
+    "educational": "#2b7489",
+    "react": "#61dafb",
+    "asp": "#6a0dad",
+    "django": "#092e20",
+    "vue": "#41b883",
+    "nextjs": "#000000",
+    "vibe coded": "#ff69b4"
+  }
+}

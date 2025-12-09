@@ -58,6 +58,10 @@ html, body {
     height: min-content;
     position: relative;
     padding-bottom: 300px;
+
+    /* box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0.25); */
+
+    border: 0.5px solid rgba(255, 255, 255, 0.613);
 }
 
 #more-projects-link {
@@ -221,7 +225,6 @@ a:hover {
   height: 200px;
   text-decoration: none;
   position: relative;
-  border-radius: 20px;
   overflow: hidden; /* Prevent text and overlay from overflowing */
   font-size: 14px;
 }
@@ -235,14 +238,13 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid rgba(0, 0, 0, 0.857);
+  border: 5px solid rgb(0, 0, 0);
 }
 .project:hover {
   opacity: 1;
 }
 
 .project .overlay {
-  border-radius: 0px;
   position: absolute;
   top: 0;
   left: 0;
@@ -253,6 +255,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   z-index: 1; /* Ensure overlay is above the background but below text */
+  position: relative;
 }
 
 .project span {
@@ -278,6 +281,8 @@ a:hover {
   /* Hide scrollbar for WebKit (Chrome, Edge, Safari) */
   scrollbar-width: none;           /* Firefox */
   -ms-overflow-style: none;        /* IE/Edge */
+
+
 }
 
 .about-me-header {
@@ -929,17 +934,21 @@ html, body {
   background-color: rgba(0, 0, 0, 0.54);
   border-radius: 10px;
   padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.255);
 }
 
 #filter-input {
+  
   background-color: #00000058;
   border-style: none;
   border: 1px solid rgba(255, 255, 255, 0.219);
   border-radius: 2px;
-  margin: 5px;
   height: fit-content;
   color: white;
   font-family: 'geist', sans-serif;
+  padding: 8px 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hairline {
@@ -1022,4 +1031,28 @@ html, body {
   height: 12px;
   border-radius: 3px;
   display: inline-block;
+}
+
+.tag-icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+
+  border-radius: 1px;
+}
+
+.tags-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;   /* allows growing upward */
+  align-items: flex-end;
+
+  padding: 15px 10px;
+
+  background-color: rgba(0, 0, 0, 0.795);
+  width: 100%;
+  z-index: 900;          /* higher than overlay's z-index: 1 */
+  pointer-events: auto; 
 }
