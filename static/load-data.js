@@ -1,5 +1,47 @@
 let PROJECTS = []; // loaded from JSON
 let COLORS = [];
+
+/** PNG/JPEG backgrounds: prefer sibling WebP (from `npm run optimize-images`). */
+function backdropImageValue(bgUrl) {
+    if (!bgUrl || !/\.(png|jpe?g)$/i.test(bgUrl)) {
+        return `url('${bgUrl}')`;
+    }
+    const webpUrl = bgUrl.replace(/\.(png|jpe?g)$/i, ".webp");
+    const mime = /\.jpe?g$/i.test(bgUrl) ? "image/jpeg" : "image/png";
+    return `image-set(url('${webpUrl}') type('image/webp'), url('${bgUrl}') type('${mime}'))`;
+}
+
+function preloadRaster(href) {
+    if (!href) return;
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+function prefetchRasterWebp(bgUrl) {
+    if (!bgUrl || !/\.(png|jpe?g)$/i.test(bgUrl)) return;
+    preloadRaster(bgUrl.replace(/\.(png|jpe?g)$/i, ".webp"));
+}
+
+const lazyBgObserver =
+    typeof IntersectionObserver !== "undefined"
+        ? new IntersectionObserver(
+              (entries, obs) => {
+                  for (const e of entries) {
+                      if (!e.isIntersecting) continue;
+                      const el = e.target;
+                      const v = el.dataset.lazyBg;
+                      if (v) el.style.backgroundImage = v;
+                      delete el.dataset.lazyBg;
+                      obs.unobserve(el);
+                  }
+              },
+              { root: null, rootMargin: "180px", threshold: 0.01 },
+          )
+        : null;
+
 // -------- FETCH THE JSON -------- //
 async function loadProjectsJSON() {
     try {
@@ -25,7 +67,11 @@ function RenderMoreProjects( filters = [] ) {
 
     // Remove only existing project links
     const existingProjects = grid.querySelectorAll(".project-link");
-    existingProjects.forEach(el => el.remove());
+    existingProjects.forEach((el) => {
+        const tile = el.querySelector(".project");
+        if (tile && lazyBgObserver) lazyBgObserver.unobserve(tile);
+        el.remove();
+    });
 
     const nonFeatured = PROJECTS;
 
@@ -45,7 +91,12 @@ function RenderMoreProjects( filters = [] ) {
 
         const project = document.createElement("div");
         project.className = "project";
-        project.style.backgroundImage = `url('${bg}')`;
+        const backdrop = backdropImageValue(bg);
+        if (lazyBgObserver) {
+            project.dataset.lazyBg = backdrop;
+        } else {
+            project.style.backgroundImage = backdrop;
+        }
         project.style.borderRadius = "10px";
         project.style.opacity = 0.7;
 
@@ -72,6 +123,8 @@ function RenderMoreProjects( filters = [] ) {
             tagdiv.style.backgroundColor = COLORS[tag];
             tagsContainer.appendChild(tagdiv);
         });
+
+        if (lazyBgObserver) lazyBgObserver.observe(project);
     });
 }
 
@@ -89,7 +142,7 @@ function RenderFeaturedProjects() {
 
         const bgOverlay = document.createElement("div");
         bgOverlay.classList.add("bg-overlay");
-        bgOverlay.style.backgroundImage = `url('${bg}')`;
+        bgOverlay.style.backgroundImage = backdropImageValue(bg);
 
         const anchor = document.createElement("a");
         anchor.textContent = label;
@@ -125,6 +178,8 @@ function RenderFeaturedProjects() {
 
         carousel.appendChild(item);
     });
+
+    featuredItems.forEach(({ bg }) => prefetchRasterWebp(bg));
 }
 
 

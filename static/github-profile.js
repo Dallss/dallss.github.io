@@ -12,7 +12,7 @@ async function loadGitHubProfile(username, containerId) {
  
    container.innerHTML = `
      <div style=" color: #c9d1d9; font-family: sans-serif;">
-       <img src="${user.avatar_url}" style="width: 100%; border-radius: 50%; border: 2px solid #30363d;" />
+       <img src="${user.avatar_url}" alt="" width="260" height="260" decoding="async" loading="lazy" fetchpriority="low" style="width: 100%; height: auto; border-radius: 50%; border: 2px solid #30363d;" />
        <h2 style="margin-top: 0.5rem;">${user.name || user.login}</h2>
        <p>
          👥 <strong>${user.followers}</strong> followers · <strong>${user.following}</strong> following
@@ -23,7 +23,7 @@ async function loadGitHubProfile(username, containerId) {
        <h3 style="text-align: left;">Organizations</h3>
        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
          ${orgs.map(org => `
-           <img src="${org.avatar_url}" title="${org.login}" width="40" height="40" style="border-radius: 8px;" />
+           <img src="${org.avatar_url}" alt="" title="${org.login}" width="40" height="40" decoding="async" loading="lazy" fetchpriority="low" style="border-radius: 8px;" />
          `).join('')}
        </div>
      </div>
