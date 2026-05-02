@@ -8,10 +8,10 @@
   <script src="./static/github-profile.js"></script>
   <script type="module" src="./static/filter.js" defer></script>
   <script src="./static/terminal-intro.js"></script>
-  <script type="module" src="./static/load-data.js" defer></script>
+  <script type="module" src="./static/load-data.js?v=2" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <link rel="stylesheet" href="./static/styles.css?v=1">
+  <link rel="stylesheet" href="./static/styles.css?v=8">
   <link rel="stylesheet" href="./static/tablet.css?v=1">
   <link rel="stylesheet" href="./static/mobile.css?v=1">
 
@@ -49,22 +49,19 @@
       </div>
     </div>
     <div class="more-projects" id="more-projects">
-      <div class="sidebar">
-        <div class="filter-title">Filter</div>
+      <div class="projects-filter-strip" aria-label="Project filters">
+        <span class="filter-title">Filter</span>
         <div class="search-box">
           <input
             type="text"
             id="filter-input"
-            placeholder="Search filters..."
+            placeholder="Search tags…"
             oninput="showDropdown()"
             onfocus="showDropdown()"
           />
-      
           <div class="dropdown" id="dropdown"></div>
         </div>
-        <div class="hairline"></div>
-        <div id="selected-tags"></div>
-
+        <div id="selected-tags" class="selected-tags"></div>
       </div>
       <div class="projects-grid" id="projects-grid"></div>
     </div>

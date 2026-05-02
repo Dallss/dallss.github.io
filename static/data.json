@@ -2,6 +2,7 @@
   "projects": [
     {
       "label": "Path Finding Sim",
+      "description": "Interactive canvas visualizer for classic pathfinding algorithms—watch search frontiers unfold and compare heuristics in real time.",
       "bg": "./static/images/algo_simulator.png",
       "link": "https://dallss.github.io/pathfinding-algorithms-visualizer/",
       "featured": true,
@@ -9,6 +10,7 @@
     },
     {
       "label": "ProbSim",
+      "description": "Hands-on probability playground in the browser: experiments, distributions, and intuition for coursework and demos.",
       "bg": "./static/images/probsim.png",
       "link": "https://dallss.github.io/ProbSim/",
       "featured": true,
@@ -16,6 +18,7 @@
     },
     {
       "label": "Brave Heart",
+      "description": "Landing and product UX for a fire-safety-focused site—responsive React shell backed by ASP APIs.",
       "bg": "./static/images/braveheart.png",
       "link": "https://braveheart-firesafety.netlify.app/",
       "featured": true,
@@ -23,6 +26,7 @@
     },
     {
       "label": "RUBIKZ",
+      "description": "In-browser Rubik's cube sandbox: scramble, manipulate layers, and learn patterns without installing an app.",
       "bg": "./static/images/rubikz.png",
       "link": "https://rubikz.vercel.app/",
       "featured": true,
@@ -30,6 +34,7 @@
     },
     {
       "label": "Connect-4",
+      "description": "Play against a minimax-backed opponent—full board logic, pruning, and instant replays from the deployed build.",
       "bg": "./static/images/connect.png",
       "link": "https://dallss.github.io/Minimax-Applications/connect-4",
       "featured": false,
@@ -37,6 +42,7 @@
     },
     {
       "label": "Chain-Reaction",
+      "description": "Chain-reaction puzzle in the vein of Virus Wars; AI opponent built on the same minimax stack.",
       "bg": "./static/images/chain.png",
       "link": "https://dallss.github.io/Minimax-Applications/chain-reaction",
       "featured": false,
@@ -44,6 +50,7 @@
     },
     {
       "label": "Snake Game",
+      "description": "Retro snake implemented in C++—terminal or framework-friendly codebase for messing with game loops and collision.",
       "bg": "./static/images/snake.png",
       "link": "https://github.com/Dallss/Snake-Game",
       "featured": false,
@@ -51,6 +58,7 @@
     },
     {
       "label": "Upload",
+      "description": "Team file-management pipeline: Django services plus a Vue SPA for uploads, roles, and handoff-friendly workflows.",
       "bg": "./static/images/upload.png",
       "link": "https://github.com/ctrlsolutions/upload",
       "featured": false,
@@ -58,6 +66,7 @@
     },
     {
       "label": "Budget-Co",
+      "description": "Shared budgeting web app deployed on Railway—track pools, receipts, and split expenses with Django under the hood.",
       "bg": "./static/images/budgetco.png",
       "link": "https://budget-co.up.railway.app/",
       "featured": false,
@@ -65,6 +74,7 @@
     },
     {
       "label": "Laymans-Law",
+      "description": "Legal literacy concept for non-lawyers—Next.js experience paired with Django content and auth prototypes.",
       "bg": "./static/images/laymans.png",
       "link": "https://github.com/ctrlsolutions/laymans-law",
       "featured": false,
@@ -72,6 +82,7 @@
     },
     {
       "label": "9 Mazes of Hell",
+      "description": "Collaborative dungeon-maze outing in JavaScript—team-built levels, pacing, and browser-native controls.",
       "bg": "./static/images/mazesofhell.png",
       "link": "https://github.com/DaRainFlavor/9-Mazes-of-Hell",
       "featured": false,

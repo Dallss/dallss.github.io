@@ -100,10 +100,9 @@
      width: 200px;
    }
  
-   .project-link {
-     flex: 0 0 120px;
-     width: 200px;
-     aspect-ratio: 1/1;
+   .projects-grid {
+     grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+     gap: 1.1rem;
    }
  
    .footer h3 {

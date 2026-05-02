@@ -75,10 +75,10 @@ function RenderMoreProjects( filters = [] ) {
 
     const nonFeatured = PROJECTS;
 
-    nonFeatured.forEach(({ label, bg, link, tags }) => {
+    nonFeatured.forEach(({ label, description = "", bg, link, tags = [] }) => {
 
-        if(filters.length > 0){
-            const matches = filters.every(filter => tags.includes(filter));
+        if (filters.length > 0) {
+            const matches = filters.every((filter) => tags.includes(filter));
             if (!matches) return;
         }
         
@@ -89,6 +89,9 @@ function RenderMoreProjects( filters = [] ) {
         anchor.rel = "noopener noreferrer";
         anchor.className = "project-link";
 
+        const media = document.createElement("div");
+        media.className = "project-card-media";
+
         const project = document.createElement("div");
         project.className = "project";
         const backdrop = backdropImageValue(bg);
@@ -97,32 +100,44 @@ function RenderMoreProjects( filters = [] ) {
         } else {
             project.style.backgroundImage = backdrop;
         }
-        project.style.borderRadius = "10px";
-        project.style.opacity = 0.7;
 
         const overlay = document.createElement("div");
         overlay.className = "overlay";
-
-        const projectName = document.createElement("span");
-        projectName.textContent = label;
-
-        overlay.appendChild(projectName);
         project.appendChild(overlay);
-        anchor.appendChild(project);
+        media.appendChild(project);
+
+        const textWrap = document.createElement("div");
+        textWrap.className = "project-card-text";
+
+        if (tags.length > 0) {
+            const tagsRow = document.createElement("div");
+            tagsRow.className = "project-card-tags";
+            tags.forEach((tag) => {
+                const dot = document.createElement("span");
+                dot.className = "tag-icon";
+                dot.title = tag;
+                dot.style.backgroundColor = COLORS[tag];
+                tagsRow.appendChild(dot);
+            });
+            textWrap.appendChild(tagsRow);
+        }
+
+        const titleEl = document.createElement("h3");
+        titleEl.className = "project-card-title";
+        titleEl.textContent = label;
+        textWrap.appendChild(titleEl);
+
+        const descTrimmed = typeof description === "string" ? description.trim() : "";
+        if (descTrimmed) {
+            const descEl = document.createElement("p");
+            descEl.className = "project-card-desc";
+            descEl.textContent = descTrimmed;
+            textWrap.appendChild(descEl);
+        }
+
+        anchor.appendChild(media);
+        anchor.appendChild(textWrap);
         grid.appendChild(anchor);
-
-        // Render tags
-        const tagsContainer = document.createElement("div");
-        tagsContainer.className = "tags-container";
-        overlay.appendChild(tagsContainer);
-
-        tags.forEach((tag) => {
-            const tagdiv = document.createElement("div");
-            tagdiv.className = "tag-icon";
-            tagdiv.title = tag;
-            tagdiv.style.backgroundColor = COLORS[tag];
-            tagsContainer.appendChild(tagdiv);
-        });
 
         if (lazyBgObserver) lazyBgObserver.observe(project);
     });
