@@ -8,7 +8,7 @@
   --accent: #1b5e3a;
   --accent-soft: rgba(27, 94, 58, 0.12);
   --radius-sharp: 6px;
-  --radius-card: 8px;
+  --radius-card: 0px;
   --font: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --max-readable: 720px;
   --header-h: 56px;
@@ -169,12 +169,13 @@ html, body {
 
 .featured-works {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: clamp(2rem, 4vw, 2.75rem);
 }
 
 .featured-card {
   margin: 0;
+  width: 45%;
 }
 
 .featured-card-link {
@@ -588,11 +589,10 @@ html, body {
   align-items: stretch;
   background-color: #0d1117;
   color: #e6edf3;
-  border-radius: var(--radius-sharp);
+  border-radius: 0;
   width: 100%;
   max-width: 100%;
   margin: 0;
-  overflow: hidden;
   border: 1px solid rgba(240, 246, 252, 0.1);
 }
 
@@ -623,6 +623,9 @@ html, body {
   width: 100%;
   padding: 0;
   gap: 0;
+
+  overflow: visible;
+  position: relative;
 }
 
 .readme-container {
@@ -640,12 +643,83 @@ html, body {
 }
 
 .profile {
-  width: min(280px, 100%);
+  position: absolute;
+  left: -170px; /* push it outside */
+  top: 0;
+  width: 150px;
   margin: 0;
   padding: 1rem 0 1rem 1.15rem;
   flex-shrink: 0;
+  z-index: 999;
+  background-color: #0d1117;
+  border-radius: 2px;
 }
 
+@media (max-width: 1300px) {
+  .profile {
+    display: none;
+  }
+}
+
+/* ===== GitHub Profile Card ===== */
+.gh-profile {
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+  line-height: 1.4;
+}
+
+/* Avatar */
+.gh-avatar {
+  width: 80%;
+  height: auto;
+
+  border-radius: 50%;
+  border: 2px solid #30363d;
+
+  /* GitHub-like cutout effect */
+  box-shadow: 0 0 0 4px #0d1117;
+}
+
+/* Name */
+.gh-name {
+  font-size: clamp(0.7rem, 1vw, 1.1rem);
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Followers text */
+.gh-meta {
+  font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+  opacity: 0.85;
+}
+
+/* Divider */
+.gh-divider {
+  border: 1px solid #30363d;
+  margin: 0.6rem 0;
+}
+
+/* Org title */
+.gh-org-title {
+  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  margin-bottom: 0.3rem;
+}
+
+/* Org container */
+.gh-orgs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Org avatars */
+.gh-org-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
 .github-profile-slot {
   padding: 0 !important;
   width: 100%;

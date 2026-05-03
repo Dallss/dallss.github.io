@@ -11,22 +11,31 @@ async function loadGitHubProfile(username, containerId) {
    const orgs = await orgRes.json();
  
    container.innerHTML = `
-     <div style=" color: #c9d1d9; font-family: sans-serif;">
-       <img src="${user.avatar_url}" alt="" width="260" height="260" decoding="async" loading="lazy" fetchpriority="low" style="width: 100%; height: auto; border-radius: 50%; border: 2px solid #30363d;" />
-       <h2 style="margin-top: 0.5rem;">${user.name || user.login}</h2>
-       <p>
-         👥 <strong>${user.followers}</strong> followers · <strong>${user.following}</strong> following
-       </p>
- 
-       <hr style="border: 1px solid #30363d; margin: 1rem 0;" />
- 
-       <h3 style="text-align: left;">Organizations</h3>
-       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-         ${orgs.map(org => `
-           <img src="${org.avatar_url}" alt="" title="${org.login}" width="40" height="40" decoding="async" loading="lazy" fetchpriority="low" style="border-radius: 8px;" />
-         `).join('')}
-       </div>
-     </div>
-   `;
+      <div class="gh-profile">
+        <img class="gh-avatar" src="${user.avatar_url}" alt="" />
+
+        <h2 class="gh-name">
+          ${user.name || user.login}
+        </h2>
+
+        <p class="gh-meta">
+          👥 <strong>${user.followers}</strong> followers · 
+          <strong>${user.following}</strong> following
+        </p>
+
+        <hr class="gh-divider" />
+
+        <h3 class="gh-org-title">Organizations</h3>
+
+        <div class="gh-orgs">
+          ${orgs.map(org => `
+            <img class="gh-org-avatar"
+                src="${org.avatar_url}"
+                alt=""
+                title="${org.login}" />
+          `).join('')}
+        </div>
+      </div>
+    `;
  }
  
