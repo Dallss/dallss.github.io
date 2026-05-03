@@ -113,6 +113,11 @@
     "django": "#092e20",
     "vue": "#41b883",
     "nextjs": "#000000",
-    "vibe coded": "#ff69b4"
+    "vibe coded": "#ff69b4",
+    "swift": "#F05138",
+    "macos": "#999999",
+    "in progress": "#d29922",
+    "school project": "#6e7681",
+    "hackathon": "#a371f7"
   }
 }
