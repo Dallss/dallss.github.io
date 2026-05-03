@@ -9,6 +9,7 @@
   <script type="module" src="./static/load-data.js?v=2" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./static/terminal-intro.js" defer></script>
+  <script src="./static/theme.js" defer></script>
 
   <link rel="stylesheet" href="./static/styles.css?v=9">
   <link rel="stylesheet" href="./static/tablet.css?v=2">
@@ -21,11 +22,18 @@
   <div id="main-content">
     <header class="site-header" aria-label="Site">
       <a class="site-mark" href="/">Randall Alquicer</a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#aboutme">About</a>
-        <a href="https://github.com/Dallss" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="./works.html">Works</a>
-      </nav>
+    
+      <div class="header-right">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#aboutme">About</a>
+          <a href="https://github.com/Dallss" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="./works.html">Works</a>
+        </nav>
+    
+        <button id="theme-toggle" aria-label="Toggle theme">
+          ☼
+        </button>
+      </div>
     </header>
 
     <main class="site-main">

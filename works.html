@@ -7,6 +7,7 @@
 
   <script type="module" src="./static/load-data.js?v=2" defer></script>
   <script type="module" src="./static/filter.js" defer></script>
+  <script src="./static/theme.js" defer></script>
 
   <link rel="stylesheet" href="./static/styles.css?v=9">
   <link rel="stylesheet" href="./static/tablet.css?v=2">
@@ -19,11 +20,16 @@
   <div id="main-content">
     <header class="site-header" aria-label="Site">
       <a class="site-mark" href="./index.html">Randall Alquicer</a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="./index.html#aboutme">About</a>
-        <a href="https://github.com/Dallss" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span class="site-nav-current" aria-current="page">Works</span>
-      </nav>
+    
+      <div class="header-right">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="./index.html#aboutme">About</a>
+          <a href="https://github.com/Dallss" target="_blank">GitHub</a>
+          <span class="site-nav-current">Works</span>
+        </nav>
+    
+        <button id="theme-toggle" aria-label="Toggle theme">☼</button>
+      </div>
     </header>
 
     <main class="site-main works-page-main">

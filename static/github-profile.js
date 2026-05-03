@@ -38,4 +38,3 @@ async function loadGitHubProfile(username, containerId) {
       </div>
     `;
  }
- 
