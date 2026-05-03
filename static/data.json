@@ -1,8 +1,16 @@
 {
   "projects": [
     {
+      "label": "LIFT",
+      "description": "Personal macOS menu bar task manager built with SwiftUI — lightweight floating panel, custom UX design, and native OS integration.",
+      "bg": "./static/images/lift.png",
+      "link": "https://github.com/Dallss/LIFT",
+      "featured": true,
+      "tags": ["swift", "macos", "in progress"]
+    },
+    {
       "label": "Path Finding Sim",
-      "description": "Interactive canvas visualizer for classic pathfinding algorithms—watch search frontiers unfold and compare heuristics in real time.",
+      "description": "From-scratch vanilla JS canvas system for spawning, dragging, and visualizing pathfinding algorithms in real time.",
       "bg": "./static/images/algo_simulator.png",
       "link": "https://dallss.github.io/pathfinding-algorithms-visualizer/",
       "featured": true,
@@ -18,15 +26,15 @@
     },
     {
       "label": "Brave Heart",
-      "description": "Landing and product UX for a fire-safety-focused site—responsive React shell backed by ASP APIs.",
+      "description": "Prototype for a project that was sold to a client.",
       "bg": "./static/images/braveheart.png",
-      "link": "https://braveheart-firesafety.netlify.app/",
+      "link": "https://github.com/Dallss/Brave-Heart-Backend",
       "featured": true,
-      "tags": ["deployed", "react", "asp"]
+      "tags": ["react", "asp"]
     },
     {
       "label": "RUBIKZ",
-      "description": "In-browser Rubik's cube sandbox: scramble, manipulate layers, and learn patterns without installing an app.",
+      "description": "Three.js project for learning WebGL-based rendering, cube state logic, and 3D interaction.",
       "bg": "./static/images/rubikz.png",
       "link": "https://rubikz.vercel.app/",
       "featured": true,
@@ -50,7 +58,7 @@
     },
     {
       "label": "Snake Game",
-      "description": "Retro snake implemented in C++—terminal or framework-friendly codebase for messing with game loops and collision.",
+      "description": "Built in C++ to learn linked lists and low-level memory management — a hands-on into game loops, pointer arithmetic, and collision logic.",
       "bg": "./static/images/snake.png",
       "link": "https://github.com/Dallss/Snake-Game",
       "featured": false,
@@ -62,23 +70,23 @@
       "bg": "./static/images/upload.png",
       "link": "https://github.com/ctrlsolutions/upload",
       "featured": false,
-      "tags": ["team project", "django", "vue"]
+      "tags": ["team project", "django", "vue", "school project"]
     },
     {
       "label": "Budget-Co",
-      "description": "Shared budgeting web app deployed on Railway—track pools, receipts, and split expenses with Django under the hood.",
+      "description": "School project: Shared budgeting web app made in 1 day! 🔥 Track pools, receipts, and split expenses with Django under the hood.",
       "bg": "./static/images/budgetco.png",
-      "link": "https://budget-co.up.railway.app/",
-      "featured": false,
-      "tags": ["team project", "django", "vibe coded"]
+      "link": "https://dallsszz.pythonanywhere.com/",
+      "featured": true,
+      "tags": ["team project", "django", "vibe coded", "school project"]
     },
     {
       "label": "Laymans-Law",
-      "description": "Legal literacy concept for non-lawyers—Next.js experience paired with Django content and auth prototypes.",
+      "description": " Hackathon: Legal literacy concept for non-lawyers—Next.js experience paired with Django content and auth prototypes.",
       "bg": "./static/images/laymans.png",
       "link": "https://github.com/ctrlsolutions/laymans-law",
       "featured": false,
-      "tags": ["team project", "nextjs", "django"]
+      "tags": ["team project", "nextjs", "django", "hackathon"]
     },
     {
       "label": "9 Mazes of Hell",
