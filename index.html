@@ -6,90 +6,80 @@
   <title>Randall Alquicer</title>
 
   <script src="./static/github-profile.js"></script>
-  <script type="module" src="./static/filter.js" defer></script>
-  <script src="./static/terminal-intro.js"></script>
   <script type="module" src="./static/load-data.js?v=2" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./static/terminal-intro.js" defer></script>
 
-  <link rel="stylesheet" href="./static/styles.css?v=8">
-  <link rel="stylesheet" href="./static/tablet.css?v=1">
-  <link rel="stylesheet" href="./static/mobile.css?v=1">
+  <link rel="stylesheet" href="./static/styles.css?v=9">
+  <link rel="stylesheet" href="./static/tablet.css?v=2">
+  <link rel="stylesheet" href="./static/mobile.css?v=2">
 
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Jalandhar&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div id="splash">
-    <div id="here"></div>
-  </div>
-
   <div id="main-content">
-    <div class="section">
-      <div class="header">
-        <h1 class="greetings"><span style="color: rgba(185, 185, 185, 0.669);">Hello,</span> I'm Randall</h1>
-        <div class="sub-wrapper">
-          <div class="sub-slider" id="slider">
-            <p class="sub">Full-stack Web Developer</p>
-            <p class="sub">Machine Learning Student</p>
+    <header class="site-header" aria-label="Site">
+      <a class="site-mark" href="/">Randall Alquicer</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#aboutme">About</a>
+        <a href="https://github.com/Dallss" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="./works.html">Works</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-hello">Hello!</p>
+        <h1 id="hero-title" class="hero-name">I'm Randall,</h1>
+        <div class="hero-roles-wrap">
+          <div class="hero-roles" id="slider">
+            <p class="hero-role">a full-stack web developer.</p>
+            <p class="hero-role">a machine learning student.</p>
           </div>
         </div>
-      </div>
-      <div class="main-sub">
-        <div class="links">
-          <a href="#aboutme" class="section-link">About me</a>
-          <a href="https://github.com/Dallss" class="section-link">Github</a>
-          <a href="#more-projects" id="more-projects-link" class="section-link section-title">
-            Works
-          </a>
-          
-        </div>
-        <div class="carousel" id="carousel"></div>
+        <p class="hero-lede">
+          I ship interfaces and tooling on the web—clear systems, deliberate layout, and code that respects the reader.
+        </p>
+      </section>
 
-      </div>
-    </div>
-    <div class="more-projects" id="more-projects">
-      <div class="projects-filter-strip" aria-label="Project filters">
-        <span class="filter-title">Filter</span>
-        <div class="search-box">
-          <input
-            type="text"
-            id="filter-input"
-            placeholder="Search tags…"
-            oninput="showDropdown()"
-            onfocus="showDropdown()"
-          />
-          <div class="dropdown" id="dropdown"></div>
+      <section class="selected-works" aria-labelledby="selected-heading">
+        <h2 id="selected-heading" class="section-heading">Selected Works <span class="section-arrow">↘</span></h2>
+        <div id="featured-works" class="featured-works"></div>
+        <p class="works-cta-wrap">
+          <a class="works-cta" href="./works.html">All projects &amp; filters <span class="section-arrow">↘</span></a>
+        </p>
+      </section>
+
+      <section class="about-me" id="aboutme" aria-labelledby="about-heading">
+        <div class="about-me-header">
+          <picture>
+            <source type="image/webp" srcset="./static/images/github-white-icon.webp">
+            <img src="./static/images/github-white-icon.png" alt="" width="32" height="32" decoding="async" fetchpriority="low">
+          </picture>
+          <h2 id="about-heading" class="about-me-title">About me</h2>
         </div>
-        <div id="selected-tags" class="selected-tags"></div>
-      </div>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-    <div class="about-me" id="aboutme">
-      <div class="about-me-header">
-        <picture>
-          <source type="image/webp" srcset="./static/images/github-white-icon.webp">
-          <img src="./static/images/github-white-icon.png" alt="GitHub" width="40" height="40" decoding="async" fetchpriority="low" style="width: 40px; height: 40px;">
-        </picture>
-        <h1 class="about-me-title">About me</h1>
-      </div>
-      <div id="narrative" class="narrative">
-        <div class="profile"> 
-          <div id="github-profile" style="padding: 1rem; border-radius: 1rem; width: 100%;"></div>
+        <div id="narrative" class="narrative">
+          <div class="profile">
+            <div id="github-profile" class="github-profile-slot"></div>
+          </div>
+          <div class="readme-container">
+            <article class="markdown-body readme" id="markdown"></article>
+          </div>
         </div>
-        <div class="readme-container">
-          <article class="markdown-body readme" id="markdown" style="padding:2rem;"></article>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
-      <h3 class="section-title">Connect with me:</h3>
-      <p>
-        <a href="https://www.linkedin.com/in/randall-alquicer-a28497302/" target="_blank">LinkedIn</a> |
-        <a href="https://www.instagram.com/dallsszz/" target="_blank">Instagram</a> |
-        <a href="mailto:raalquicer@up.edu.ph">raalquicer@up.edu.ph</a>
-      </p>
-    </div>
+      </section>
+
+      <footer class="footer">
+        <h3 class="footer-heading">Socials ↘</h3>
+        <p class="footer-links">
+          <a href="https://www.linkedin.com/in/randall-alquicer-a28497302/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="footer-sep"> · </span>
+          <a href="https://www.instagram.com/dallsszz/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <span class="footer-sep"> · </span>
+          <a href="mailto:raalquicer@up.edu.ph">raalquicer@up.edu.ph</a>
+        </p>
+      </footer>
+    </main>
   </div>
 </body>
 </html>

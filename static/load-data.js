@@ -48,8 +48,6 @@ async function loadProjectsJSON() {
         const res = await fetch("./static/data.json");
         const data = await res.json();
         PROJECTS = data.projects;
-        console.log("Loaded Projects:", PROJECTS);
-
         COLORS = data.tagColors;
 
         RenderMoreProjects();
@@ -59,13 +57,10 @@ async function loadProjectsJSON() {
     }
 }
 
-function RenderMoreProjects( filters = [] ) {
-
-    console.log("render");
+function RenderMoreProjects(filters = []) {
     const grid = document.getElementById("projects-grid");
     if (!grid || PROJECTS.length === 0) return;
 
-    // Remove only existing project links
     const existingProjects = grid.querySelectorAll(".project-link");
     existingProjects.forEach((el) => {
         const tile = el.querySelector(".project");
@@ -73,15 +68,14 @@ function RenderMoreProjects( filters = [] ) {
         el.remove();
     });
 
-    const nonFeatured = PROJECTS;
+    const normalized = filters.map((f) => String(f).toLowerCase());
 
-    nonFeatured.forEach(({ label, description = "", bg, link, tags = [] }) => {
-
-        if (filters.length > 0) {
-            const matches = filters.every((filter) => tags.includes(filter));
+    PROJECTS.forEach(({ label, description = "", bg, link, tags = [] }) => {
+        if (normalized.length > 0) {
+            const tagLower = tags.map((t) => String(t).toLowerCase());
+            const matches = normalized.every((filter) => tagLower.includes(filter));
             if (!matches) return;
         }
-        
 
         const anchor = document.createElement("a");
         anchor.href = link;
@@ -143,76 +137,100 @@ function RenderMoreProjects( filters = [] ) {
     });
 }
 
-
-function RenderFeaturedProjects() {
-    const featuredItems = PROJECTS.filter(p => p.featured);
-    const carousel = document.getElementById("carousel");
-    let currentExpandedItem = null;
-
-    carousel.innerHTML = "";
-
-    featuredItems.forEach(({ label, bg, link, tags}) => {
-        const item = document.createElement("div");
-        item.classList.add("car-item");
-
-        const bgOverlay = document.createElement("div");
-        bgOverlay.classList.add("bg-overlay");
-        bgOverlay.style.backgroundImage = backdropImageValue(bg);
-
-        const anchor = document.createElement("a");
-        anchor.textContent = label;
-        anchor.href = link;
-        anchor.target = "_blank";
-        anchor.style.color = "inherit";
-        anchor.style.textDecoration = "none";
-
-        item.appendChild(bgOverlay);
-        item.appendChild(anchor);
-
-        const handleInteraction = (e) => {
-            if (e.target.tagName.toLowerCase() === "a") return;
-            e.preventDefault();
-
-            if (item.classList.contains("expanded")) {
-                item.classList.remove("expanded");
-                bgOverlay.style.opacity = "";
-                currentExpandedItem = null;
-            } else {
-                if (currentExpandedItem) {
-                    currentExpandedItem.classList.remove("expanded");
-                    currentExpandedItem.querySelector(".bg-overlay").style.opacity = "";
-                }
-                item.classList.add("expanded");
-                bgOverlay.style.opacity = "0.3";
-                currentExpandedItem = item;
-            }
-        };
-
-        item.addEventListener("click", handleInteraction);
-        item.addEventListener("touchstart", handleInteraction, { passive: false });
-
-        carousel.appendChild(item);
-    });
-
-    featuredItems.forEach(({ bg }) => prefetchRasterWebp(bg));
+function formatKicker(tags) {
+    if (!tags || tags.length === 0) return "Project";
+    const t = tags[0];
+    return t.length ? t.charAt(0).toUpperCase() + t.slice(1) : "Project";
 }
 
+function RenderFeaturedProjects() {
+    const container = document.getElementById("featured-works");
+    if (!container) return;
 
+    const featuredItems = PROJECTS.filter((p) => p.featured);
+    container.innerHTML = "";
 
-// ----------- DOM READY ---------------- //
+    if (featuredItems.length === 0) return;
+
+    featuredItems.forEach(({ label, description = "", bg, link, tags = [] }) => {
+        prefetchRasterWebp(bg);
+
+        const article = document.createElement("article");
+        article.className = "featured-card";
+
+        const anchor = document.createElement("a");
+        anchor.className = "featured-card-link";
+        anchor.href = link;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+
+        const media = document.createElement("div");
+        media.className = "featured-card-media";
+
+        const cover = document.createElement("div");
+        cover.className = "featured-card-cover";
+        const backdrop = backdropImageValue(bg);
+        if (lazyBgObserver) {
+            cover.dataset.lazyBg = backdrop;
+            lazyBgObserver.observe(cover);
+        } else {
+            cover.style.backgroundImage = backdrop;
+        }
+
+        media.appendChild(cover);
+
+        const body = document.createElement("div");
+        body.className = "featured-card-body";
+
+        const kicker = document.createElement("p");
+        kicker.className = "featured-card-kicker";
+        kicker.textContent = `${formatKicker(tags)} ·`;
+
+        const title = document.createElement("h3");
+        title.className = "featured-card-title";
+        title.append(document.createTextNode(`${label} `));
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = "↘";
+        title.append(arrow);
+
+        body.appendChild(kicker);
+        body.appendChild(title);
+
+        const descTrimmed = typeof description === "string" ? description.trim() : "";
+        if (descTrimmed) {
+            const desc = document.createElement("p");
+            desc.className = "featured-card-desc";
+            desc.textContent = descTrimmed;
+            body.appendChild(desc);
+        }
+
+        if (tags.length > 0) {
+            const row = document.createElement("div");
+            row.className = "featured-card-tags";
+            tags.slice(0, 6).forEach((tag) => {
+                const dot = document.createElement("span");
+                dot.className = "tag-dot";
+                dot.title = tag;
+                dot.style.backgroundColor = COLORS[tag] || "#888";
+                row.appendChild(dot);
+            });
+            body.appendChild(row);
+        }
+
+        anchor.appendChild(media);
+        anchor.appendChild(body);
+        article.appendChild(anchor);
+        container.appendChild(article);
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Load JSON → then load UI
     loadProjectsJSON();
 });
 
-// Expose module functions globally for HTML inline handlers
 window.loadProjectsJSON = loadProjectsJSON;
 window.RenderMoreProjects = RenderMoreProjects;
 window.RenderFeaturedProjects = RenderFeaturedProjects;
 
-export { 
-    loadProjectsJSON, 
-    RenderMoreProjects, 
-    RenderFeaturedProjects 
-};
+export { loadProjectsJSON, RenderMoreProjects, RenderFeaturedProjects };
