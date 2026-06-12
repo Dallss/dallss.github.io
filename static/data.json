@@ -1,6 +1,14 @@
 {
   "projects": [
     {
+      "label": "RentApart",
+      "description": "Full-stack rental platform built with Django and Next.js, featuring Mapbox integration and Places API for interactive location-based search.",
+      "bg": "./static/images/rentapart.png",
+      "link": "https://rent-apart-bay.vercel.app/",
+      "featured": true,
+      "tags": ["django", "nextjs", "postgresql", "deployed"]
+    },
+    {
       "label": "LIFT",
       "description": "Personal macOS menu bar task manager built with SwiftUI — lightweight floating panel, custom UX design, and native OS integration.",
       "bg": "./static/images/lift.png",
@@ -77,7 +85,7 @@
       "description": "School project: Shared budgeting web app made in 1 day! 🔥 Track pools, receipts, and split expenses with Django under the hood.",
       "bg": "./static/images/budgetco.png",
       "link": "https://dallsszz.pythonanywhere.com/",
-      "featured": true,
+      "featured": false,
       "tags": ["team project", "django", "vibe coded", "school project"]
     },
     {
